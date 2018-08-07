@@ -1,5 +1,5 @@
 {
-  "name": "my-first-angular6-project",
+  "name": "notebook-shop",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -10,6 +10,9 @@
     "e2e": "ng e2e"
   },
   "private": true,
+  "engines": {
+    "node": ">=10.8.0"
+  },
   "dependencies": {
     "@angular/animations": "^6.0.3",
     "@angular/cdk": "^6.4.0",
