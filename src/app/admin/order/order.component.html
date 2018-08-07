@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div *ngFor="let order of orderList; let i = index">
+
+      <div class="row">
+        <div class="col-md-12 " >
+          <a class="list-group-item clearfix"
+             routerLinkActive="active">
+
+            <div class="flex">
+              <div class="inlain" *ngFor="let goodsItem of order.goods">
+                <h4 class="list-group-item-heading goods-name">{{ goodsItem.name }}</h4>
+                <img [src]="goodsItem.imagePath" alt="{{ goodsItem.name}}" class="img-responsive" style="max-height: 70px;">
+                <p> Price: {{ goodsItem.price }} $</p>
+              </div>
+
+              <div class="user_contact">
+                <h5>{{ order.name }}</h5>
+                <div>{{ order.surname }}</div>
+                <div>{{ order.phone }}</div>
+                <div>{{ order.email }}</div>
+                <button class="btn btn-primary delete" (click)="onDelete(i)">Delete</button>
+              </div>
+            </div>
+
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="orderList.length === 0">
+      <h3>You have not orders yet!</h3>
+    </div>
+  </div>
+</div>

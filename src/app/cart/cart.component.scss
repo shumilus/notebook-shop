@@ -1,0 +1,30 @@
+.inlain{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.delete{
+  width: 70px;
+  height: 40px;
+  text-align: center;
+}
+
+.cart_container{
+  width: 1200px;
+  padding: 0 50px;
+  margin: 0 auto;
+}
+
+.decor{
+  font-size: 15px;
+}
+
+.total{
+  text-align: right;
+  margin-right: 250px;
+}
+
+.to_order{
+  margin-bottom: 20px;
+}

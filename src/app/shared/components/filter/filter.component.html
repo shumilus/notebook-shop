@@ -1,0 +1,38 @@
+<div class="pipe_container">
+  <div>
+    <h5 class="filter-name">Price filter</h5>
+    <label for="min_price">Min: </label>
+    <input type="text" id="min_price" [(ngModel)]="minPrice" (input)="minTest()">
+    <br>
+    <label for="min_price">Max: </label>
+    <input type="text" id="max_price" [(ngModel)]="maxPrice" (input)="maxTest()">
+  </div>
+  <hr>
+
+  <div>
+    <h5 class="filter-name">Pages filter</h5>
+    <label for="pages">Pages: </label>
+    <select [(ngModel)]="page"
+            (change)="sendPageParams(page)"
+            id="pages">
+      <option value="" selected >Choose number of pages</option>
+      <option value="80">80</option>
+      <option value="120">120</option>
+      <option value="160">160</option>
+    </select>
+  </div>
+  <hr>
+
+  <div>
+    <h5 class="filter-name">material filter</h5>
+    <label for="coverMaterial" class="cover">Cover material: </label>
+    <select [(ngModel)]="covMat"
+            (change)="sendCovMatParams(covMat)"
+            id="coverMaterial">
+      <option value="" selected >Choose cover material</option>
+      <option value="Laminated cardboard">Laminated cardboard</option>
+      <option value="skin">Skin</option>
+      <option value="pvh">pvh</option>
+    </select>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Sign in</h2>
+<form [formGroup]="signinForm" (ngSubmit)="onSingin()" class="form">
+  <mat-dialog-content >
+    <mat-form-field class="input">
+      <input matInput
+             placeholder="Enail"
+             formControlName="email" type="email">
+    </mat-form-field>
+    <i class="fas fa-ban red-stop"
+       *ngIf="!signinForm.get('email').valid"></i>
+    <i class="fas fa-calendar-check green-true"
+       *ngIf="signinForm.get('email').valid"></i>
+    <span class="help-block red-stop"
+          *ngIf="!signinForm.get('email').valid && signinForm.get('email').value">Please enter a valid email name</span>
+    <br>
+    <mat-form-field class="input">
+      <input matInput
+             placeholder="Password"
+             formControlName="password" type="password">
+    </mat-form-field>
+    <i class="fas fa-ban red-stop"
+       *ngIf="!signinForm.get('password').valid"></i>
+    <i class="fas fa-calendar-check green-true"
+       *ngIf="signinForm.get('password').valid"></i>
+    <span class="help-block red-stop"
+          *ngIf="!signinForm.get('password').valid && signinForm.get('email').value && signinForm.get('email').value">Password should have more then 8 symbol</span>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button class="mat-raised-button" mat-dialog-close mat-button>Close</button>
+    <button class="mat-raised-button mat-primary"
+            mat-button
+            type="submit"
+            [disabled]="!signinForm.valid"
+            (click)="onCloseForm()">Sing In</button>
+  </mat-dialog-actions>
+</form>
+
+

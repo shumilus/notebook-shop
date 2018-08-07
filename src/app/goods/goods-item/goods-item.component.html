@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-12 product-box">
+    <a class="list-group-item clearfix"
+       [routerLink]="[goods.id]"
+       routerLinkActive="active">
+      <span class="pull-left">
+        <img [src]="goods.imagePath" alt="{{ goods.name}}" class="img-responsive" style="max-height: 180px;">
+      </span>
+      <div class="pull-right discription-product">
+        <h4 class="list-group-item-heading product-title">The notebook: </h4>
+        <h4 class="list-group-item-heading product-title">"{{ goods.name }}"</h4>
+        <!--<p class="list-group-item-text">{{ goods.description | shorten: 30}}</p>-->
+        <h5 class="list-group-item-heading product-title text">Price: {{ goods.price}} $</h5>
+      </div>
+
+    </a>
+    <button class="btn btn-primary add-button" (click)="onAddToCart()">Add to cart</button>
+  </div>
+</div>

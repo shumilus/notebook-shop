@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>Tne notebook "{{ goods?.name }}"</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <img src="{{ goods?.imagePath }}" alt="{{ goods?.name }}" class="img-responsive" style="max-height: 250px">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-12">Description: {{ goods?.description }}</div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-12">Price: {{ goods?.price }} $</div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-12">Number of page: {{ goods?.pages }}</div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-12">Cover material: {{ goods?.coverMaterial }}</div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group edit-btn">
+      <button type="button"
+              class="btn btn-primary"
+              (click)="onEditGoods()">Edit Goods</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger" (click)="onDeleteGoods()">Delete Goods</button>
+    </div>
+  </div>
+</div>

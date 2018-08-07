@@ -1,0 +1,24 @@
+.home-container {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main-img{
+  width: 1150px;
+}
+
+.add-img{
+  display: flex;
+}
+
+.second-img{
+  width: 550px;
+  margin: 25px
+}
+
+img{
+  width: 100%;
+}

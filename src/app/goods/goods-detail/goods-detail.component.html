@@ -1,0 +1,31 @@
+<div class="detail-container">
+  <div class="row">
+    <div class="btn-group to-goodslist">
+      <button type="button" class="btn btn-danger" (click)="toGoodsList()">To Goodslist</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <img src="{{ goods?.imagePath }}" alt="{{ goods?.name }}" class="img-responsive" style="max-height: 350px">
+
+    </div>
+    <div class="col-md-7">
+      <h1>The notebook "{{ goods?.name }}"</h1>
+      <h4 class="col-xs-12">Description: {{ goods?.description }}</h4>
+      <h4 class="col-xs-12">Price: {{ goods?.price }} $</h4>
+      <h4 class="col-xs-12">Number of page: {{ goods?.pages }}</h4>
+      <h4 class="col-xs-12">Cover material: {{ goods?.coverMaterial }}</h4>
+
+      <div class="col-xs-12">
+        <div class="btn-group">
+          <button type="button"
+                  class="btn btn-primary"
+                  (click)="onAddToCart()">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
