@@ -14,7 +14,7 @@ const appRoutes: Routes = [
       { path: '', component: GoodsListComponent},
       { path: ':id', component: GoodsDetailComponent}
     ]},
-  { path: 'cart', component: CartComponent},
+  { path: 'cart', component: CartComponent, data: {name: 'basket'}},
   // { path: 'admin', component: AdminComponent},
 ];
 

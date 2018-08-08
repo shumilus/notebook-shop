@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Goods} from '@shared/models/goods.model';
-import {AdminService} from '@shared/services/admin.service';
+import {ProductService} from '@shared/services/product.service';
 import {CartService} from '@shared/services/cart.service';
 
 @Component({
@@ -13,24 +13,23 @@ export class GoodsDetailComponent implements OnInit {
   goods: Goods;
   id: number;
 
-  constructor( private adminService: AdminService,
+  constructor( private productService: ProductService,
                private router: Router,
                private route: ActivatedRoute,
                private cartService: CartService) { }
 
   ngOnInit() {
-    // console.log(this.id);
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        // console.log(this.id);
-        this.goods = this.adminService.getProduct(this.id);
-        // if (this.goods === undefined) {
-        //   this.router.navigate(['../'], {relativeTo: this.route}); //how to do no bag after reload?
-        //   return;
-        // }
+        this.goods = this.productService.getProduct(this.id);
       }
     );
+
+    this.productService.productsSubject
+        .subscribe((goods: Goods[]) => {
+        this.goods = this.productService.getProduct(this.id);
+    })
   }
 
   toGoodsList() {
@@ -39,7 +38,6 @@ export class GoodsDetailComponent implements OnInit {
 
   onAddToCart() {
     this.cartService.addCart(this.goods);
-    // console.log(this.goods);
     this.cartService.saveInBasket();
   }
 

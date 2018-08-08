@@ -5,7 +5,7 @@ import {Subscription} from 'rxjs';
 import {AuthService} from '@shared/services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {OrderStorageService} from '@shared/services/order-storage-service';
-import {AdminService} from '@shared/services/admin.service';
+import {ProductService} from '@shared/services/product.service';
 import {Order} from '@shared/models/order.model';
 
 @Component({
@@ -27,7 +27,7 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService,
               private authService: AuthService,
               private orderStorageService: OrderStorageService,
-              private adminService: AdminService) {
+              private productService: ProductService) {
   }
 
   ngOnInit() {
@@ -86,7 +86,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.order.phone = this.buyerForm.value.phone;
     this.order.email = this.buyerForm.value.email;
     this.order.goods = this.cartList;
-    this.adminService.addOrder(this.order);
+    this.productService.addOrder(this.order);
   }
 
   private initForm() {

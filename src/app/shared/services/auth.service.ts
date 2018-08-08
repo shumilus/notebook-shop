@@ -31,7 +31,11 @@ export class AuthService implements OnInit {
   }
 
   getToken() {
-    return this.userSubject.value.token;
+    return this.userSubject.value;
+  }
+
+  getTokenId() {
+      return this.userSubject.value.token;
   }
 
   singinUser(email: string, password: string) {

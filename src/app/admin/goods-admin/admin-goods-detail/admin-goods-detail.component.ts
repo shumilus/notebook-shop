@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Goods} from '@shared/models/goods.model';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {AdminService} from '@shared/services/admin.service';
+import { ProductService} from '@shared/services/product.service';
 import {MatDialog} from '@angular/material';
-import {ProductStorageService} from '@shared/services/products-storage-service';
+// import {ProductStorageService} from '@shared/services/products-storage-service';
 
 @Component({
   selector: 'app-admin-goods-detail',
@@ -14,17 +14,15 @@ export class AdminGoodsDetailComponent implements OnInit {
   goods: Goods;
   id: number;
 
-  constructor( private adminService: AdminService,
+  constructor( private productService: ProductService,
                private router: Router,
-               private route: ActivatedRoute,
-               private dialog: MatDialog,
-               private productStorageService: ProductStorageService) { }
+               private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.goods = this.adminService.getProduct(this.id);
+        this.goods = this.productService.getProduct(this.id);
         // if (this.goods === undefined) {
         //   this.router.navigate(['../'], {relativeTo: this.route}); //how to do no bag after reload?
         //   return;
@@ -42,15 +40,15 @@ export class AdminGoodsDetailComponent implements OnInit {
   }
 
   onDeleteGoods() {
-    this.adminService.deleteGoods(this.id);
+    this.productService.deleteGoods(this.id);
     this.saveData();
     this.router.navigate(['/admin']);
 
-    this.adminService.getGoods();
+    this.productService.getGoods();
   }
 
   saveData() {
-    this.productStorageService.storageGoods().subscribe(
+    this.productService.storageGoods().subscribe(
       (response: any) => {
         console.log('test');
         // console.log(response);

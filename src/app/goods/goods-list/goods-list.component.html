@@ -1,10 +1,11 @@
 <div class="row">
   <div class="col-md-9">
     <div class="products-container">
-      <app-goods-item *ngFor="let goodsItem of goodsList | paginate: { itemsPerPage: 8, currentPage: p }
+      <app-goods-item *ngFor="let goodsItem of goodsList
                     | pagesFilter:filteredPage:'pages'
                     | pagesFilter:filteredCovMat:'coverMaterial'
-                    | priceFilter:filteredMinPrice:filteredMaxPrice:'price'; let i = index"
+                    | priceFilter:filteredMinPrice:filteredMaxPrice:'price'
+                    | paginate: { itemsPerPage: 8, currentPage: p }; let i = index"
                       [goods]="goodsItem"
                       [index]="i"></app-goods-item>
     </div>

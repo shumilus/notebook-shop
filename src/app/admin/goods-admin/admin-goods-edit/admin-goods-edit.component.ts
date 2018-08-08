@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AdminService} from '../../../shared/services/admin.service';
 import {MatDialog} from '@angular/material';
 import {ToasterService} from 'angular2-toaster';
-import {ProductStorageService} from '../../../shared/services/products-storage-service';
+// import {ProductStorageService} from '@shared/services/products-storage-service';
+import {ProductService} from "@shared/services/product.service";
 
 @Component({
   selector: 'app-admin-goods-edit',
@@ -18,11 +18,10 @@ export class AdminGoodsEditComponent implements OnInit {
   goodsForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
-              private adminService: AdminService,
+              private productService: ProductService,
               private router: Router,
               private toasterService: ToasterService,
-              private dialog: MatDialog,
-              private productStorageService: ProductStorageService) {
+              private dialog: MatDialog,) {
   }
 
   ngOnInit() {
@@ -44,7 +43,7 @@ export class AdminGoodsEditComponent implements OnInit {
     let goodsCoverMaterial = '';
 
     if (this.editMode) {
-      const product = this.adminService.getProduct(this.id);
+      const product = this.productService.getProduct(this.id);
 
       goodsName = product.name;
       goodsImagePath = product.imagePath;
@@ -72,10 +71,10 @@ export class AdminGoodsEditComponent implements OnInit {
     const newGoods = this.goodsForm.value;
     if (this.editMode) {
       newGoods.id = this.id;
-      this.adminService.updateGoods(this.id, newGoods);
+      this.productService.updateGoods(this.id, newGoods);
     } else {
-      newGoods.id = this.adminService.getGoods().length;
-      this.adminService.addGoods(newGoods);
+      newGoods.id = this.productService.getGoods().length;
+      this.productService.addGoods(newGoods);
     }
     this.onCancel();
     this.toasterService.pop('success', 'You added new goods!' );
@@ -83,10 +82,9 @@ export class AdminGoodsEditComponent implements OnInit {
   }
 
   saveData() {
-    this.productStorageService.storageGoods().subscribe(
+    this.productService.storageGoods().subscribe(
       (response: any) => {
         // console.log('test');
-        // console.log(response);
       });
   }
 

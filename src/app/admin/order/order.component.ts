@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Order} from '@shared/models/order.model';
-import {AdminService} from '@shared/services/admin.service';
+import {ProductService} from '@shared/services/product.service';
 import {Subscription} from 'rxjs';
 import {OrderStorageService} from '@shared/services/order-storage-service';
 
@@ -13,23 +13,23 @@ export class OrderComponent implements OnInit, OnDestroy {
   orderList: Order[] = [];
   orderChangedSubscription: Subscription;
 
-  constructor(private adminService: AdminService,
+  constructor(private productService: ProductService,
               private orderStorageService: OrderStorageService) {
   }
 
   ngOnInit() {
     this.fetchOrders();
-    this.orderChangedSubscription = this.adminService.orderChanged
+    this.orderChangedSubscription = this.productService.orderChanged
       .subscribe(
         (orders: Order[]) => {
           this.orderList = orders;
         }
       );
-    this.orderList = this.adminService.getOrders();
+    this.orderList = this.productService.getOrders();
   }
 
   onDelete(index: number) {
-    this.adminService.deleteOrder(index);
+    this.productService.deleteOrder(index);
     // this.sum -= +price;
     this.saveOrder();
   }

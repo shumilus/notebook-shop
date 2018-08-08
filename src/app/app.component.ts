@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ToasterConfig, ToasterService} from 'angular2-toaster';
 import {AuthService} from '@shared/services/auth.service';
 import {environment} from '../environments/environment';
+import {ProductService} from "@shared/services/product.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import {environment} from '../environments/environment';
 export class AppComponent implements OnInit {
 
   constructor(private toasterService: ToasterService,
-  private authService: AuthService) {}
+              private authService: AuthService,
+              private productService: ProductService) {}
 
   toasterconfig: ToasterConfig =
     new ToasterConfig({
@@ -26,7 +28,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authService.initializeApp();
     this.authService.checkLogining();
-    console.log(environment.env);
+    this.productService.getProducts();
   }
 
 }

@@ -13,9 +13,9 @@ import {CartService} from '@shared/services/cart.service';
 import {OrderStorageService} from '@shared/services/order-storage-service';
 import {AuthGuardService} from '@shared/services/auth-guard.service';
 import {ToasterModule, ToasterService} from 'angular2-toaster';
-import {AdminService} from '@shared/services/admin.service';
+import {ProductService} from '@shared/services/product.service';
 import {AuthService} from '@shared/services/auth.service';
-import {ProductStorageService} from '@shared/services/products-storage-service';
+// import {ProductStorageService} from '@shared/services/products-storage-service';
 
 import {AppComponent} from './app.component';
 import {GoodsComponent} from './goods/goods.component';
@@ -52,8 +52,8 @@ import {CommonService} from '@shared/services/common.service';
   providers: [
     AuthService,
     ToasterService,
-    AdminService,
-    ProductStorageService,
+    ProductService,
+    // ProductStorageService,
     CartService,
     OrderStorageService,
     AuthGuardService,
