@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {Goods} from '../../shared/models/goods.model';
-import {AdminService} from '../../shared/services/admin.service';
-import {ProductStorageService} from '../../shared/services/products-storage-service';
+import {Goods} from '@shared/models/goods.model';
+import {AdminService} from '@shared/services/admin.service';
+import {ProductStorageService} from '@shared/services/products-storage-service';
 
 @Component({
   selector: 'app-goods-list',

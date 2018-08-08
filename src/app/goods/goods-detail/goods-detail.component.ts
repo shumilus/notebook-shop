@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Goods} from '../../shared/models/goods.model';
-import {AdminService} from '../../shared/services/admin.service';
-import {CartService} from '../../shared/services/cart.service';
+import {Goods} from '@shared/models/goods.model';
+import {AdminService} from '@shared/services/admin.service';
+import {CartService} from '@shared/services/cart.service';
 
 @Component({
   selector: 'app-goods-detail',

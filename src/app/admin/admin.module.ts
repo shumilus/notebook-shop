@@ -9,7 +9,7 @@ import {AdminGoodsEditComponent} from './goods-admin/admin-goods-edit/admin-good
 import {AdminGoodsListComponent} from './goods-admin/admin-goods-list/admin-goods-list.component';
 import {AdminGoodsItemComponent} from './goods-admin/admin-goods-list/admin-goods-item/admin-goods-item.component';
 import { AdminGoodsStartComponent } from './goods-admin/admin-goods-start/admin-goods-start.component';
-import {SharedModule} from '../shared/modules/shared.module';
+import {SharedModule} from '@shared/modules/shared.module';
 import { OrderComponent } from './order/order.component';
 import { GoodsAdminComponent } from './goods-admin/goods-admin.component';
 import {NgxPaginationModule} from 'ngx-pagination';

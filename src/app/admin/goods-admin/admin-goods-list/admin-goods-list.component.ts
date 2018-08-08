@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthService} from '../../../shared/services/auth.service';
-import {Goods} from '../../../shared/models/goods.model';
+import {AuthService} from '@shared/services/auth.service';
+import {Goods} from '@shared/models/goods.model';
 import {Subscription} from 'rxjs';
-import {AdminService} from '../../../shared/services/admin.service';
+import {AdminService} from '@shared/services/admin.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductStorageService} from '../../../shared/services/products-storage-service';
+import {ProductStorageService} from '@shared/services/products-storage-service';
 
 @Component({
   selector: 'app-admin-goods-list',

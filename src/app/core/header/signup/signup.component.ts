@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../../shared/services/auth.service';
+import {AuthService} from '@shared/services/auth.service';
 import {ToasterService} from 'angular2-toaster';
 import {MatDialog} from '@angular/material';
-import {CommonService} from '../../../shared/services/common.service';
+import {CommonService} from '@shared/services/common.service';
 
 @Component({
   selector: 'app-signup',

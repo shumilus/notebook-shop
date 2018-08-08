@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Order} from '../../shared/models/order.model';
-import {AdminService} from '../../shared/services/admin.service';
+import {Order} from '@shared/models/order.model';
+import {AdminService} from '@shared/services/admin.service';
 import {Subscription} from 'rxjs';
-import {OrderStorageService} from '../../shared/services/order-storage-service';
+import {OrderStorageService} from '@shared/services/order-storage-service';
 
 @Component({
   selector: 'app-order',

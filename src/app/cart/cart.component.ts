@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Goods} from '../shared/models/goods.model';
-import {CartService} from '../shared/services/cart.service';
+import {Goods} from '@shared/models/goods.model';
+import {CartService} from '@shared/services/cart.service';
 import {Subscription} from 'rxjs';
-import {AuthService} from '../shared/services/auth.service';
+import {AuthService} from '@shared/services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {OrderStorageService} from '../shared/services/order-storage-service';
-import {AdminService} from '../shared/services/admin.service';
-import {Order} from '../shared/models/order.model';
+import {OrderStorageService} from '@shared/services/order-storage-service';
+import {AdminService} from '@shared/services/admin.service';
+import {Order} from '@shared/models/order.model';
 
 @Component({
   selector: 'app-cart',

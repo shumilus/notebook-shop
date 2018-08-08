@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Goods} from '../../../../shared/models/goods.model';
+import {Goods} from '@shared/models/goods.model';
 
 @Component({
   selector: 'app-admin-goods-item',

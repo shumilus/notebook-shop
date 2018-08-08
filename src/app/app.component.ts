@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ToasterConfig, ToasterService} from 'angular2-toaster';
-import {AuthService} from './shared/services/auth.service';
+import {AuthService} from '@shared/services/auth.service';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authService.initializeApp();
     this.authService.checkLogining();
+    console.log(environment.env);
   }
 
 }

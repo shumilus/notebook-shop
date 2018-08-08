@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Goods} from '../../../shared/models/goods.model';
+import {Goods} from '@shared/models/goods.model';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {AdminService} from '../../../shared/services/admin.service';
+import {AdminService} from '@shared/services/admin.service';
 import {MatDialog} from '@angular/material';
-import {ProductStorageService} from '../../../shared/services/products-storage-service';
+import {ProductStorageService} from '@shared/services/products-storage-service';
 
 @Component({
   selector: 'app-admin-goods-detail',
