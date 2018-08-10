@@ -10,12 +10,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {AdminModule} from './admin/admin.module';
 
 import {CartService} from '@shared/services/cart.service';
-import {OrderStorageService} from '@shared/services/order-storage-service';
+
 import {AuthGuardService} from '@shared/services/auth-guard.service';
 import {ToasterModule, ToasterService} from 'angular2-toaster';
 import {ProductService} from '@shared/services/product.service';
 import {AuthService} from '@shared/services/auth.service';
-// import {ProductStorageService} from '@shared/services/products-storage-service';
 
 import {AppComponent} from './app.component';
 import {GoodsComponent} from './goods/goods.component';
@@ -25,6 +24,7 @@ import {GoodsItemComponent} from './goods/goods-item/goods-item.component';
 import {GoodsDetailComponent} from './goods/goods-detail/goods-detail.component';
 import {GoodsListComponent} from './goods/goods-list/goods-list.component';
 import {CommonService} from '@shared/services/common.service';
+import {OrderService} from "@shared/services/order.service";
 
 @NgModule({
   declarations: [
@@ -53,9 +53,8 @@ import {CommonService} from '@shared/services/common.service';
     AuthService,
     ToasterService,
     ProductService,
-    // ProductStorageService,
     CartService,
-    OrderStorageService,
+    OrderService,
     AuthGuardService,
     CommonService
   ],

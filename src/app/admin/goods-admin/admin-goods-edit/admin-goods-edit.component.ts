@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material';
 import {ToasterService} from 'angular2-toaster';
 // import {ProductStorageService} from '@shared/services/products-storage-service';
 import {ProductService} from "@shared/services/product.service";
+import {Goods} from "@shared/models/goods.model";
 
 @Component({
   selector: 'app-admin-goods-edit',
@@ -69,23 +70,16 @@ export class AdminGoodsEditComponent implements OnInit {
 
   onSubmit() {
     const newGoods = this.goodsForm.value;
+    const products = this.productService.getCurrentProductsList();
     if (this.editMode) {
       newGoods.id = this.id;
-      this.productService.updateGoods(this.id, newGoods);
+      products[this.id] = newGoods;
     } else {
-      newGoods.id = this.productService.getGoods().length;
-      this.productService.addGoods(newGoods);
+      newGoods.id = this.productService.getCurrentProductsList().length;
+      products.push(newGoods);
     }
     this.onCancel();
-    this.toasterService.pop('success', 'You added new goods!' );
-    this.saveData();
-  }
-
-  saveData() {
-    this.productService.storageGoods().subscribe(
-      (response: any) => {
-        // console.log('test');
-      });
+    this.productService.storageGoods(products);
   }
 
   onCancel() {

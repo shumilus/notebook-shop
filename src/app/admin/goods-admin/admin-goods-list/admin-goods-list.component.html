@@ -17,12 +17,17 @@
                           | pagesFilter:filteredPage:'pages'
                           | pagesFilter:filteredCovMat:'coverMaterial'
                           | priceFilter:filteredMinPrice:filteredMaxPrice:'price'
-                          | paginate: { itemsPerPage: 4, currentPage: p}; let i = index"
+                          | paginate: { itemsPerPage: 4, currentPage: page}; let i = index"
                           [goods]="goodsItem" [index]="i"></app-admin-goods-item>
+    <div *ngIf = "!goodsList?.length" >
+      <h4>
+        Please add new product!
+      </h4>
+    </div>
   </div>
 </div>
 <div class="pagination-template">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>
 
 

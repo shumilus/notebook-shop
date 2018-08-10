@@ -2,4 +2,52 @@
   height: 100px;
   background-color: rgba(118,33,113,0.9);
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.logo-color {
+  color: rgba(255, 175, 30, 0.9);
+  font-size: 25px;
+}
+
+.logo-color:hover {
+  color: rgba(255, 218, 64, 0.9);
+}
+
+.phone{
+  display: flex;
+  align-items: center;
+  color: rgba(255, 175, 30, 0.9);
+}
+
+p{
+  font-size: 20px;
+}
+
+i{
+  font-size: 25px;
+  margin: 5px 10px;
+  color: rgba(255, 175, 30, 0.9);
+}
+
+i:hover{
+  color: rgba(255, 218, 64, 0.9);
+}
+
+.icons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon{
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+a{
+  cursor: pointer;
 }

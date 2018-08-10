@@ -1,8 +1,12 @@
 <div class="admin-container">
   <div class="col-md-7">
     <div class="button-container">
-      <button class="btn btn-primary" (click)="onNewGoods()">Add goods</button>
-      <button class="btn btn-success button-container" (click)="toOrder()">To order list</button>
+      <button class="mat-raised-button add-btn"
+              (click)="onNewGoods()"
+              mat-button >Add goods</button>
+      <button class="mat-raised-button btn-color button-container"
+              (click)="toOrder()"
+              mat-button>To order list</button>
     </div>
     <div>
       <app-admin-goods-list></app-admin-goods-list>

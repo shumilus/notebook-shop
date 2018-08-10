@@ -6,7 +6,7 @@ import {ProductService} from './product.service';
 import {Order} from '../models/order.model';
 
 @Injectable()
-export class OrderStorageService {
+export class OrderService {
 
   constructor (private http: HttpClient,
                private cartService: CartService,
@@ -14,7 +14,7 @@ export class OrderStorageService {
                private productService: ProductService) {}
 
   storageOrders() {
-    const token = this.authService.getTokenId();
+    const token = this.authService.getToken().token;
     return this.http.put(`https://myfirstangular6project.firebaseio.com/order.json?auth=${token}`,
       this.productService.getOrders());
   }

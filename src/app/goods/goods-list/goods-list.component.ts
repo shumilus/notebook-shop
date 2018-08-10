@@ -14,16 +14,15 @@ export class GoodsListComponent implements OnInit, OnDestroy {
   filteredCovMat = '';
   filteredMinPrice = '';
   filteredMaxPrice = '';
-  goodsChangedSubscription: Subscription;
-  p = 1;
+  productsSubscription: Subscription;
+  page = 1;
 
   constructor(private productService: ProductService) {
   }
 
   ngOnInit() {
-    // this.productService.getProducts();
     this.goodsList = this.productService.getCurrentProductsList();
-    this.goodsChangedSubscription = this.productService.goodsChanged
+    this.productsSubscription = this.productService.productsSubject
       .subscribe((goods: Goods[]) => {
           this.goodsList = goods;
         }
@@ -31,7 +30,7 @@ export class GoodsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.goodsChangedSubscription.unsubscribe();
+    this.productsSubscription.unsubscribe();
   }
 
 }

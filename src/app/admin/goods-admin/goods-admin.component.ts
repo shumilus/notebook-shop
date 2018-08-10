@@ -24,9 +24,6 @@ export class GoodsAdminComponent {
 
   toOrder() {
     this.router.navigate(['admin', 'order'] );
-    // this.router.navigate(['/admin']);
   }
-
-
 
 }

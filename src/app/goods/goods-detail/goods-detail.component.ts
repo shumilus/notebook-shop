@@ -38,7 +38,7 @@ export class GoodsDetailComponent implements OnInit {
 
   onAddToCart() {
     this.cartService.addCart(this.goods);
-    this.cartService.saveInBasket();
+    this.cartService.setCart();
   }
 
 }

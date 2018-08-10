@@ -1,18 +1,18 @@
-<div class="header-container">
-
-  <nav class="navbar navbar-default">
+<div>
+  <nav class="navbar navbar-default nav-color">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a routerLink="/" class="navbar-brand logo color">Blocking</a>
+        <a routerLink="/" class="navbar-brand logo logo-color">Blocking</a>
       </div>
 
       <div class="collapse navbar-collapse">
-        <app-nav-menu></app-nav-menu>
-
-        <ul class="nav navbar-nav navbar-right">
+        <div>
+          <app-nav-menu></app-nav-menu>
+        </div>
+        <ul class="nav navbar-right menu">
           <ng-template [ngIf]="!user">
-            <li><a (click)="openForm('signup')">Register</a></li>
-            <li><a (click)="openForm('signin')">Login</a></li>
+            <li><a class="logo-color" (click)="openForm('signup')" >Register</a></li>
+            <li><a class="logo-color" (click)="openForm('signin')">Login</a></li>
           </ng-template>
           <li class="admin">
             <span *ngIf="user?.isAdmin">Admin</span>
@@ -20,18 +20,17 @@
           <li class="admin">
             <span>{{ user?.email }}</span>
           </li>
-          <li *ngIf="user">
-            <a (click)="onLogout()">Logout</a>
+          <li *ngIf="user" routerLinkActive="active">
+            <a class="logo-color" (click)="onLogout()">Logout</a>
           </li>
-          <li>
-            <a routerLink="cart"><i class="fas fa-cart-arrow-down color"></i></a>
+          <li routerLinkActive="active">
+            <a routerLink="cart"><i class="fas fa-cart-arrow-down logo-color active"></i></a>
           </li>
-          <li *ngIf="user?.isAdmin">
-            <a routerLink="admin">Admin Panel</a>
+          <li routerLinkActive="active" *ngIf="user?.isAdmin">
+            <a class="logo-color admin-panel " routerLink="admin">Admin Panel</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
 </div>

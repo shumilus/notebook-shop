@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material';
-import {ToasterService} from 'angular2-toaster';
 import {Router} from '@angular/router';
 import {AuthService} from '@shared/services/auth.service';
 
@@ -15,7 +14,6 @@ import {SigninComponent} from './signin/signin.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-
   userSubscription: Subscription;
   user: { email: string, isAdmin: boolean};
 
@@ -47,8 +45,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.authService.logout();
-    // this.router.navigate(['/']);
-    // this.toasterService.pop('success', 'You left your account!' );
   }
 
   ngOnDestroy() {

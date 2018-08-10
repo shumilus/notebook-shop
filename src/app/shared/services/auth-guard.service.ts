@@ -10,7 +10,6 @@ export class AuthGuardService implements CanActivate {
 
   constructor(private authService: AuthService) {}
     canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-            // console.log(this.authService.getToken());
         if (this.authService.getToken()) {
             return true;
         } else {

@@ -11,21 +11,20 @@ import {ProductService} from '@shared/services/product.service';
 })
 export class AdminGoodsListComponent implements OnInit, OnDestroy {
   goodsList: Goods[];
-  goodsChangedSubscription: Subscription;
+  productsSubscription: Subscription;
   filteredPage = '';
   filteredCovMat = '';
   filteredMinPrice = '';
   filteredMaxPrice = '';
-  p = 1;
+  page = 1;
 
   constructor(private authService: AuthService,
               private productService: ProductService) {
   }
 
   ngOnInit() {
-    // this.productService.getProducts();
     this.goodsList = this.productService.getCurrentProductsList();
-    this.goodsChangedSubscription = this.productService.goodsChanged
+    this.productsSubscription = this.productService.productsSubject
       .subscribe((goods: Goods[]) => {
           this.goodsList = goods;
         }
@@ -33,7 +32,7 @@ export class AdminGoodsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.goodsChangedSubscription.unsubscribe();
+    this.productsSubscription.unsubscribe();
   }
 
 }

@@ -1,15 +1,23 @@
 <div class="row cart_container">
-  <div class="col-xs-12">
+  <div class="col-xs-7 title">
+    <h5>Product</h5>
+    <h5>Name</h5>
+    <h5>Price</h5>
+  </div>
+  <div class="col-xs-7">
     <div *ngFor="let goodsItem of cartList; let i = index">
       <div class="row">
         <div class="col-md-12" >
           <a class="list-group-item clearfix"
              routerLinkActive="active">
             <div class="inlain decor">
-              <h4 class="list-group-item-heading">{{ goodsItem.name }}</h4>
-              <p class="list-group-item-text">{{ goodsItem.description | shorten: 30}}</p>
-              <img [src]="goodsItem.imagePath" alt="{{ goodsItem.name}}" class="img-responsive" style="max-height: 70px;">
-              <p> Price: {{ goodsItem.price }} $</p>
+              <div class="block">
+                <img [src]="goodsItem.imagePath" alt="{{ goodsItem.name}}" class="img-responsive" style="max-height: 70px;">
+              </div>
+              <div class="block">
+                <h5 class="list-group-item-heading">The notebook "{{ goodsItem.name }}"</h5>
+              </div>
+              <div class="block"> Price: {{ goodsItem.price }} $</div>
               <button class="btn btn-primary delete" (click)="onDelete(i, goodsItem.price)">Delete</button>
             </div>
           </a>
@@ -20,16 +28,12 @@
     <div *ngIf="cartList.length === 0">
       <h3>You have not selected products yet!</h3>
     </div>
+    <div>
+      <h4 class="total">Total: {{ sum }} $</h4>
+    </div>
   </div>
 
-  <div class="col-xs-12">
-    <h4 class="total">Total: {{ sum }} $</h4>
-  </div>
-</div>
-<hr>
-
-<div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+  <div class="col-xs-5 order" *ngIf="cartList.length">
     <form [formGroup]="buyerForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="name">Name</label>
@@ -70,7 +74,3 @@
     </form>
   </div>
 </div>
-
-
-
-<!--<button (click)="testing()">TEST</button>-->

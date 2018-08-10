@@ -25,11 +25,7 @@ export class CartService {
   deleteProduct(index: number) {
     this.cartList.splice(index, 1);
     this.cartChanged.next(this.cartList.slice());
-    this.toasterService.pop('error', 'You delete product!');
-  }
-
-  saveInBasket() {
-    this.setCart();
+    this.toasterService.pop('success', 'You delete product!');
   }
 
   setCart () {

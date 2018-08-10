@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Order} from '@shared/models/order.model';
 import {ProductService} from '@shared/services/product.service';
 import {Subscription} from 'rxjs';
-import {OrderStorageService} from '@shared/services/order-storage-service';
+import {OrderService} from '@shared/services/order.service';
 
 @Component({
   selector: 'app-order',
@@ -14,11 +14,11 @@ export class OrderComponent implements OnInit, OnDestroy {
   orderChangedSubscription: Subscription;
 
   constructor(private productService: ProductService,
-              private orderStorageService: OrderStorageService) {
+              private orderService: OrderService) {
   }
 
   ngOnInit() {
-    this.fetchOrders();
+    this.orderService.getOrders();
     this.orderChangedSubscription = this.productService.orderChanged
       .subscribe(
         (orders: Order[]) => {
@@ -34,12 +34,8 @@ export class OrderComponent implements OnInit, OnDestroy {
     this.saveOrder();
   }
 
-  fetchOrders() {
-    this.orderStorageService.getOrders();
-  }
-
   saveOrder() {
-    this.orderStorageService.storageOrders().subscribe(
+    this.orderService.storageOrders().subscribe(
       (response: any) => {
         console.log('order delete!');
       });

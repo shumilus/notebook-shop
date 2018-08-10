@@ -1,14 +1,13 @@
 import * as firebase from 'firebase';
 import {BehaviorSubject} from 'rxjs';
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {UserData} from '../models/userData.model';
 import {Router} from '@angular/router';
 import {ToasterService} from 'angular2-toaster';
 import {environment} from '../../../environments/environment';
 
 @Injectable()
-export class AuthService implements OnInit {
-  // dialogRef;
+export class AuthService {
   userSubject = new BehaviorSubject<UserData>(null);
   adminEmail = 'test@test.com';
 
@@ -16,7 +15,6 @@ export class AuthService implements OnInit {
               private router: Router) {
   }
 
-  // userEmail = new Subject<string>();
   singupUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(
@@ -32,10 +30,6 @@ export class AuthService implements OnInit {
 
   getToken() {
     return this.userSubject.value;
-  }
-
-  getTokenId() {
-      return this.userSubject.value.token;
   }
 
   singinUser(email: string, password: string) {
@@ -70,10 +64,6 @@ export class AuthService implements OnInit {
     this.toasterService.pop('success', 'You left your account!' );
   }
 
-  ngOnInit() {
-
-  }
-
   checkLogining() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -82,9 +72,7 @@ export class AuthService implements OnInit {
           // this.userEmail.next(user.email);
           this.userSubject.next({email: user.email, isAdmin: isAdmin, token: token});
         });
-      }// else {
-      //   console.log('no');
-      // }
+      }
     });
   }
 

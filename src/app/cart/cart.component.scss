@@ -1,7 +1,13 @@
+.cart_container{
+  width: 1200px;
+  padding: 0 50px;
+  margin: 0 auto;
+}
+
 .inlain{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .delete{
@@ -10,21 +16,41 @@
   text-align: center;
 }
 
-.cart_container{
-  width: 1200px;
-  padding: 0 50px;
-  margin: 0 auto;
-}
-
 .decor{
   font-size: 15px;
 }
 
 .total{
   text-align: right;
-  margin-right: 250px;
+  margin-right: 150px;
 }
 
 .to_order{
   margin-bottom: 20px;
 }
+
+.block{
+  display: flex;
+  justify-content: flex-start;
+  width: 150px;
+  margin-left: 20px;
+}
+
+.order{
+  margin-top: -20px;
+  position: relative;
+  padding-left: 50px;
+}
+
+.title{
+  border-bottom: 2px solid grey;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+h5{
+  width: 150px;
+  margin-left: 35px;
+
+}
+

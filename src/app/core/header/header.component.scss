@@ -1,12 +1,49 @@
+.menu{
+  display: flex;
+}
+
+.nav-color{
+  background-color: rgba(118,33,113,0.9);
+}
+
 a{
   cursor: pointer;
+}
+
+.nav>li>a {
+  padding: 15px 15px;
+}
+
+.nav>li>a:hover {
+  height: 50px;
+  background-color: rgba(108, 19, 118, 0.9);
+  color: rgba(255, 218, 64, 0.9);
 }
 
 .admin{
   width: 100px;
   margin-top: 15px;
+  color: rgba(255, 175, 30, 0.9);
+  cursor: pointer;
 }
 
-.color {
-  color: rgba(118,33,113,0.9);
+.admin:hover{
+  color: rgba(255, 218, 64, 0.9);
 }
+
+.logo-color {
+  color: rgba(255, 175, 30, 0.9);
+}
+
+i{
+  font-size: 17px;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+  color: rgba(255, 218, 64, 0.9);
+}
+
+.active>a{
+  background-color: rgba(108, 19, 118, 0.9);
+}
+

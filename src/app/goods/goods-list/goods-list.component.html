@@ -5,23 +5,25 @@
                     | pagesFilter:filteredPage:'pages'
                     | pagesFilter:filteredCovMat:'coverMaterial'
                     | priceFilter:filteredMinPrice:filteredMaxPrice:'price'
-                    | paginate: { itemsPerPage: 8, currentPage: p }; let i = index"
+                    | paginate: { itemsPerPage: 8, currentPage: page }; let i = index"
                       [goods]="goodsItem"
                       [index]="i"></app-goods-item>
+      <div *ngIf="!goodsList?.length">
+        <h4>There are no goods yet!</h4>
+      </div>
     </div>
-    <div class="pagination">
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
-
   </div>
 
   <div class="col-md-3">
-    <app-filter (filterPage)="filteredPage = $event"
+    <app-filter class="filter-box"
+                (filterPage)="filteredPage = $event"
                 (filterCovMat)="filteredCovMat = $event"
                 (filterMinPrice)="filteredMinPrice = $event"
                 (filterMaxPrice)="filteredMaxPrice = $event"></app-filter>
   </div>
-
+  <div class="pagination">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
 </div>
 
 

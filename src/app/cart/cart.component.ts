@@ -4,9 +4,9 @@ import {CartService} from '@shared/services/cart.service';
 import {Subscription} from 'rxjs';
 import {AuthService} from '@shared/services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {OrderStorageService} from '@shared/services/order-storage-service';
 import {ProductService} from '@shared/services/product.service';
 import {Order} from '@shared/models/order.model';
+import {OrderService} from "@shared/services/order.service";
 
 @Component({
   selector: 'app-cart',
@@ -19,14 +19,13 @@ export class CartComponent implements OnInit, OnDestroy {
   sum = 0;
   cartSubscription: Subscription;
   userSubscription: Subscription;
-  // user: { email: string, isAdmin: boolean};
   userEmail;
   order: Order = new Order();
   buyerForm: FormGroup;
 
   constructor(private cartService: CartService,
               private authService: AuthService,
-              private orderStorageService: OrderStorageService,
+              private orderService: OrderService,
               private productService: ProductService) {
   }
 
@@ -66,7 +65,6 @@ export class CartComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.onAddOrder();
-    // this.saveOrder();
     this.cartService.clearCart();
     this.buyerForm.reset();
     this.sum = 0;
@@ -74,9 +72,9 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   saveOrder() {
-    this.orderStorageService.storageOrders().subscribe(
+    this.orderService.storageOrders().subscribe(
       (response: any) => {
-        console.log('order saved!');
+        // console.log('order saved!');
       });
   }
 

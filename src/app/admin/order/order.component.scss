@@ -12,21 +12,42 @@
   text-align: center;
 }
 
-.flex{
+.product-block{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .user_contact{
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  padding-left: 50px;
 }
 
 .goods-name{
-  width: 180px;
+  width: 300px;
+}
+
+a{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.title{
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 2px solid grey;
+}
+
+.client-inf{
+  margin-left: 10px;
+}
+
+.name-title{
+  width: 300px;
+  margin-left: 35px;
+}
+
+.price-title{
+  width: 150px;
+  margin-left: 370px;
 }
