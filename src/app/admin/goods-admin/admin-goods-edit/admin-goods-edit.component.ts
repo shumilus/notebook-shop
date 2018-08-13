@@ -70,12 +70,12 @@ export class AdminGoodsEditComponent implements OnInit {
 
   onSubmit() {
     const newGoods = this.goodsForm.value;
-    const products = this.productService.getCurrentProductsList();
+    const products = this.productService.getCurrentProduct();
     if (this.editMode) {
       newGoods.id = this.id;
       products[this.id] = newGoods;
     } else {
-      newGoods.id = this.productService.getCurrentProductsList().length;
+      newGoods.id = this.productService.getCurrentProduct().length;
       products.push(newGoods);
     }
     this.onCancel();

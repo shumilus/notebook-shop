@@ -1,4 +1,5 @@
 import {FormControl} from '@angular/forms';
+import {Subscription} from "rxjs";
 
 export class CommonService {
 
@@ -29,9 +30,14 @@ export class CommonService {
           matchOther: true
         };
       }
-
       return null;
     };
+  }
+
+  checkSubscription( subscription: Subscription) {
+    if(subscription) {
+      subscription.unsubscribe();
+    }
   }
 
 }

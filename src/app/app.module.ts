@@ -10,11 +10,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {AdminModule} from './admin/admin.module';
 
 import {CartService} from '@shared/services/cart.service';
-
 import {AuthGuardService} from '@shared/services/auth-guard.service';
 import {ToasterModule, ToasterService} from 'angular2-toaster';
 import {ProductService} from '@shared/services/product.service';
 import {AuthService} from '@shared/services/auth.service';
+import {CommonService} from '@shared/services/common.service';
+import {OrderService} from "@shared/services/order.service";
 
 import {AppComponent} from './app.component';
 import {GoodsComponent} from './goods/goods.component';
@@ -23,8 +24,8 @@ import {CartComponent} from './cart/cart.component';
 import {GoodsItemComponent} from './goods/goods-item/goods-item.component';
 import {GoodsDetailComponent} from './goods/goods-detail/goods-detail.component';
 import {GoodsListComponent} from './goods/goods-list/goods-list.component';
-import {CommonService} from '@shared/services/common.service';
-import {OrderService} from "@shared/services/order.service";
+import {APP_BASE_HREF} from "@angular/common";
+
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {OrderService} from "@shared/services/order.service";
     CartService,
     OrderService,
     AuthGuardService,
-    CommonService
+    CommonService,
+    {provide: APP_BASE_HREF, useValue : '/' }
   ],
   bootstrap: [AppComponent]
 })

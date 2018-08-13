@@ -23,7 +23,7 @@ export class AdminGoodsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.goodsList = this.productService.getCurrentProductsList();
+    this.goodsList = this.productService.getCurrentProduct();
     this.productsSubscription = this.productService.productsSubject
       .subscribe((goods: Goods[]) => {
           this.goodsList = goods;

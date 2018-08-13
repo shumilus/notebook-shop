@@ -34,7 +34,7 @@ export class AdminGoodsDetailComponent implements OnInit {
   }
 
   onDeleteGoods() {
-    const products = this.productService.getCurrentProductsList();
+    const products = this.productService.getCurrentProduct();
     products.splice(this.id, 1);
     this.productService.storageGoods(products, true);;
     this.router.navigate(['/admin']);

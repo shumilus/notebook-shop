@@ -58,11 +58,10 @@ export class ProductService {
           const message = `Product has been ${isDelete ? 'deleted' : 'added'}`;
           this.productsSubject.next(products);
           this.toasterService.pop('success', message);
-          // console.log('test');
         });
   }
 
-  getCurrentProductsList() {
+  getCurrentProduct() {
     if (this.productsSubject.value === null){
       return [];
     }
@@ -87,6 +86,5 @@ export class ProductService {
           this.productsSubject.next(goods);
         });
   }
-
 
 }
