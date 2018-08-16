@@ -15,6 +15,7 @@ export class CartService {
   addCart(product: Goods) {
     this.cartList.push(product);
     this.cartChanged.next(this.cartList.slice());
+    this.setCart();
     this.toasterService.pop('success', 'You added product!');
   }
 

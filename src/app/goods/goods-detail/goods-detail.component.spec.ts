@@ -9,11 +9,12 @@ import {goods, MockProductService} from "@shared/unit-test-services/mock-product
 import {ToasterService} from "angular2-toaster";
 import {CommonService} from "@shared/services/common.service";
 
-import {GoodsListComponent} from "./goods-list.component";
+import {GoodsDetailComponent} from "./goods-detail.component";
+import {product} from "@shared/unit-test-services/mock-cart.service";
 
-describe('GoodsListComponent', () => {
+describe('GoodsDetailComponent', () => {
   let component: any;
-  let fixture: ComponentFixture<GoodsListComponent>;
+  let fixture: ComponentFixture<GoodsDetailComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [],
@@ -32,25 +33,46 @@ describe('GoodsListComponent', () => {
         // CUSTOM_ELEMENTS_SCHEMA
       ]
     }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(GoodsListComponent);
+      fixture = TestBed.createComponent(GoodsDetailComponent);
       component = fixture.debugElement.componentInstance;
       component.ngOnInit();
     });
 
   }));
 
-  it('Should create GoodsListComponent', async(() => {
+  it('Should create GoodsDetailComponent', async(() => {
     expect(component).toBeTruthy();
   }));
 
   describe('ngOnInit method', () => {
-    it('Should call getCurrentProduct & fetch  data for goodsList',
+    it('Should call getProduct and watch on change id',
       async(() => {
-        const spy = spyOn(component.productService, 'getCurrentProduct');
+        component.id = 1;
+        const spy = spyOn(component.productService, 'getProduct').and.returnValue(goods);
         // const spyProductsSubject = spyOn(component.productService, 'productsSubject');
         component.ngOnInit();
-        expect(component.goodsList).toEqual([goods]);
+        expect(spy).toHaveBeenCalledWith(component.id);
+        expect(component.goods).toEqual(goods);
+      }));
+  });
+
+  describe('toGoodsList method', () => {
+    it('Should navigate to one step back',
+      async(() => {
+        const spy = spyOn(component, 'toGoodsList');
+        // const spyProductsSubject = spyOn(component.productService, 'productsSubject');
+        component.toGoodsList();
         expect(spy).toHaveBeenCalledWith();
+      }));
+  });
+
+  describe('onAddToCart method', () => {
+    it('Should add product to cart',
+      async(() => {
+        component.goods = product;
+        const spy = spyOn(component.cartService, 'addCart');
+        component.onAddToCart();
+        expect(spy).toHaveBeenCalledWith(product);
       }));
   });
 

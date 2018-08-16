@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../../shared/services/auth.service';
+import {AuthService} from '@shared/services/auth.service';
 import {ToasterService} from 'angular2-toaster';
 import {MatDialog} from '@angular/material';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
+
 export class SigninComponent implements OnInit {
   signinForm: FormGroup;
 
   constructor(private authService: AuthService,
               private toasterService: ToasterService,
-              private dialog: MatDialog,
-              private router: Router) { }
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     this.initForm();
@@ -37,7 +36,6 @@ export class SigninComponent implements OnInit {
 
   onCloseForm() {
     this.dialog.closeAll();
-    // this.toasterService.pop('success', 'You have successfully registered!', );
   }
 
 }

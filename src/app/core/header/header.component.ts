@@ -6,6 +6,7 @@ import {AuthService} from '@shared/services/auth.service';
 
 import {SignupComponent} from './signup/signup.component';
 import {SigninComponent} from './signin/signin.component';
+import {CommonService} from "@shared/services/common.service";
 
 
 @Component({
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private dialog: MatDialog,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private commonService: CommonService) { }
 
   ngOnInit() {
     this.userSubscription = this.authService.userSubject
@@ -39,7 +41,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
     this.dialog.open(signStatus, {
       width: '450px',
-      data: null
     });
   }
 
@@ -48,7 +49,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.userSubscription.unsubscribe();
+    // this.userSubscription.unsubscribe();
+    this.commonService.checkSubscription(this.userSubscription);
   }
 
 }

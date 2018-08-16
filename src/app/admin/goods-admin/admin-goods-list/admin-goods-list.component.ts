@@ -3,6 +3,7 @@ import {AuthService} from '@shared/services/auth.service';
 import {Goods} from '@shared/models/goods.model';
 import {Subscription} from 'rxjs';
 import {ProductService} from '@shared/services/product.service';
+import {CommonService} from "@shared/services/common.service";
 
 @Component({
   selector: 'app-admin-goods-list',
@@ -19,7 +20,8 @@ export class AdminGoodsListComponent implements OnInit, OnDestroy {
   page = 1;
 
   constructor(private authService: AuthService,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private commonService: CommonService) {
   }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class AdminGoodsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.productsSubscription.unsubscribe();
+    this.commonService.checkSubscription(this.productsSubscription);
   }
 
 }

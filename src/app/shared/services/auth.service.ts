@@ -19,6 +19,7 @@ export class AuthService {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(
         () => {
+          this.toasterService.pop('success', 'You have successfully registered!');
           this.singinUser(email, password);
         }
       ).catch(

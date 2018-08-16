@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from '@shared/services/product.service';
 import {Order} from '@shared/models/order.model';
 import {OrderService} from "@shared/services/order.service";
+import {CommonService} from "@shared/services/common.service";
 
 @Component({
   selector: 'app-cart',
@@ -26,7 +27,8 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService,
               private authService: AuthService,
               private orderService: OrderService,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private commonService: CommonService) {
   }
 
   ngOnInit() {
@@ -38,7 +40,6 @@ export class CartComponent implements OnInit, OnDestroy {
           this.buyerForm.controls.email.setValue(this.userEmail);
         }
       );
-
     this.cartService.getCart();
 
     this.cartSubscription = this.cartService.cartChanged
@@ -79,10 +80,8 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   onAddOrder() {
-    this.order.name = this.buyerForm.value.name;
-    this.order.surname = this.buyerForm.value.surname;
-    this.order.phone = this.buyerForm.value.phone;
-    this.order.email = this.buyerForm.value.email;
+    this.order = this.buyerForm.value;
+    console.log(this.order);
     this.order.goods = this.cartList;
     this.productService.addOrder(this.order);
   }
@@ -99,8 +98,10 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.cartSubscription.unsubscribe();
-    this.userSubscription.unsubscribe();
+    // this.cartSubscription.unsubscribe();
+    // this.userSubscription.unsubscribe();
+    this.commonService.checkSubscription(this.cartSubscription);
+    this.commonService.checkSubscription(this.userSubscription);
   }
 
 }

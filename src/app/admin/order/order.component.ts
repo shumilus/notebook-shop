@@ -3,6 +3,7 @@ import {Order} from '@shared/models/order.model';
 import {ProductService} from '@shared/services/product.service';
 import {Subscription} from 'rxjs';
 import {OrderService} from '@shared/services/order.service';
+import {CommonService} from "@shared/services/common.service";
 
 @Component({
   selector: 'app-order',
@@ -14,7 +15,8 @@ export class OrderComponent implements OnInit, OnDestroy {
   orderChangedSubscription: Subscription;
 
   constructor(private productService: ProductService,
-              private orderService: OrderService) {
+              private orderService: OrderService,
+              private commonService: CommonService) {
   }
 
   ngOnInit() {
@@ -30,7 +32,6 @@ export class OrderComponent implements OnInit, OnDestroy {
 
   onDelete(index: number) {
     this.productService.deleteOrder(index);
-    // this.sum -= +price;
     this.saveOrder();
   }
 
@@ -42,7 +43,8 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.orderChangedSubscription.unsubscribe();
+    // this.orderChangedSubscription.unsubscribe();
+    this.commonService.checkSubscription(this.orderChangedSubscription);
   }
 
 }

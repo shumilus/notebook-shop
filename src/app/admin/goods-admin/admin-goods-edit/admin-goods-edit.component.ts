@@ -3,9 +3,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {ToasterService} from 'angular2-toaster';
-// import {ProductStorageService} from '@shared/services/products-storage-service';
 import {ProductService} from "@shared/services/product.service";
-import {Goods} from "@shared/models/goods.model";
 
 @Component({
   selector: 'app-admin-goods-edit',

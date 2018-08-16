@@ -46,7 +46,6 @@ export class SignupComponent implements OnInit {
     const email = this.signupForm.value.email;
     const password = this.signupForm.value.password;
     this.authService.singupUser(email, password);
-    // console.log(password);
   }
 
   forValidProjectName(control: FormControl): { [key: string]: boolean } {
@@ -60,11 +59,6 @@ export class SignupComponent implements OnInit {
 
   onCloseForm() {
     this.dialog.closeAll();
-    this.toasterService.pop('success', 'You have successfully logged in!');
   }
 
-
-  testing() {
-    console.log(this.signupForm);
-  }
 }

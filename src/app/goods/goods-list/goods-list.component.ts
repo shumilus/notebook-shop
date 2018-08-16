@@ -33,7 +33,6 @@ export class GoodsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.productsSubscription.unsubscribe();
     this.commonService.checkSubscription(this.productsSubscription);
   }
 }

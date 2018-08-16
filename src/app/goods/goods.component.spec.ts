@@ -19,7 +19,7 @@ import {GoodsComponent} from "./goods.component";
 import {GoodsListComponent} from "./goods-list/goods-list.component";
 import {AppModule} from "../app.module";
 
-describe('PaymentPlanComponent', () => {
+describe('GoodsListComponent', () => {
   let component: any;
   let fixture: ComponentFixture<GoodsComponent>;
   beforeEach(async(() => {

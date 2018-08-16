@@ -16,7 +16,6 @@ export class GoodsItemComponent {
 
   onAddToCart() {
     this.cartService.addCart(this.goods);
-    this.cartService.setCart();
   }
 
 }

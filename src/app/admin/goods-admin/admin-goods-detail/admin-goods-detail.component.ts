@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Goods} from '@shared/models/goods.model';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import { ProductService} from '@shared/services/product.service';
+import {MatDialog} from "@angular/material";
+import {AdminGoodsEditComponent} from "../admin-goods-edit/admin-goods-edit.component";
 
 @Component({
   selector: 'app-admin-goods-detail',
@@ -14,7 +16,7 @@ export class AdminGoodsDetailComponent implements OnInit {
 
   constructor( private productService: ProductService,
                private router: Router,
-               private route: ActivatedRoute) { }
+               private route: ActivatedRoute, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -27,10 +29,15 @@ export class AdminGoodsDetailComponent implements OnInit {
 
   onEditGoods() {
     this.router.navigate(['edit'], { relativeTo: this.route});
-    // this.dialog.open(AdminGoodsEditComponent, {
-    //   width: '550px',
-    //   data: null
-    // });
+    // this.openDialog(this.goods);
+  }
+
+  openDialog(product: any) {
+    this.dialog.open(AdminGoodsEditComponent, {
+      width: '1100',
+      autoFocus: false,
+      data: product
+    });
   }
 
   onDeleteGoods() {
