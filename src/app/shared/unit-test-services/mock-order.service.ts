@@ -1,4 +1,4 @@
-import {Observable} from "rxjs";
+import {of} from "rxjs";
 import {order} from "@shared/unit-test-services/mock-product.service";
 
 
@@ -9,6 +9,7 @@ export class MockOrderService {
   }
 
   storageOrders() {
-    return Observable.of([order]);
+    return of([order]);
   }
+
 }

@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
       'email': new FormControl(null, [
         Validators.required,
         Validators.email,
-        this.forValidProjectName.bind(this)]
+        this.forValidEmail.bind(this)]
       ),
       'password': new FormControl(null, [
         Validators.required,
@@ -48,7 +48,7 @@ export class SignupComponent implements OnInit {
     this.authService.singupUser(email, password);
   }
 
-  forValidProjectName(control: FormControl): { [key: string]: boolean } {
+  forValidEmail(control: FormControl): { [key: string]: boolean } {
     for (const email of this.invalidEmail) {
       if (control.value === email) {
         return {'emailName': true};

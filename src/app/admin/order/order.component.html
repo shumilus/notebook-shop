@@ -25,7 +25,9 @@
         <h5>Surname: {{ order.surname }}</h5>
         <h5>Phone: {{ order.phone }}</h5>
         <h5>Email: {{ order.email }}</h5>
-        <button class="btn btn-primary delete" (click)="onDelete(i)">Delete</button>
+        <button class="mat-primary delete-btn"
+                mat-raised-button
+                (click)="onDelete(i)">Delete</button>
       </div>
 
     </a>

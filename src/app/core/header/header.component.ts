@@ -2,12 +2,12 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
+
 import {AuthService} from '@shared/services/auth.service';
+import {CommonService} from "@shared/services/common.service";
 
 import {SignupComponent} from './signup/signup.component';
 import {SigninComponent} from './signin/signin.component';
-import {CommonService} from "@shared/services/common.service";
-
 
 @Component({
   selector: 'app-header',
@@ -49,7 +49,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.userSubscription.unsubscribe();
     this.commonService.checkSubscription(this.userSubscription);
   }
 

@@ -7,3 +7,19 @@
   text-align: center;
   margin-bottom: 15px;
 }
+
+mat-form-field{
+  width: 100%;
+}
+
+textarea{
+  resize: none;
+}
+
+.mat-primary{
+  margin-right: 20px;
+}
+
+.save-btn{
+  background-color: rgba(118, 33, 113, 0.9);
+}

@@ -53,25 +53,48 @@ describe('SigninComponent', () => {
   });
 
   describe('initForm method', () => {
-    it('init form',
+    it(' init form',
       async(() => {
         component.initForm();
-        expect(component.signinForm.value.email).toEqual(null);
-        expect(component.signinForm.value.password).toEqual(null);
-
+        expect(component.signinForm.value.email).toBe(null);
+        expect(component.signinForm.value.password).toBe(null);
       }));
   });
 
+  it('form invalid when empty', () => {
+      expect(component.signinForm.valid).toBeFalsy();
+    }
+  );
+
+  it('email field validity', () => {
+    let email = component.signinForm.controls['email'];
+    expect(email.valid).toBeFalsy();
+
+    // let errors = {};
+    // errors = email.errors || {};
+    // expect(errors['required']).toBeTruthy();
+    //
+    // email.setValue("test");
+    // errors = email.errors || {};
+    // expect(errors['pattern']).toBeTruthy();
+  });
+
+  it('submitting a form emits a user', () => {
+    expect(component.signinForm.valid).toBeFalsy();
+    component.signinForm.controls['email'].setValue("test@test.com");
+    component.signinForm.controls['password'].setValue("12345678");
+    expect(component.signinForm.valid).toBeTruthy();
+  });
+
   describe('onSingin method', () => {
-    it('Should call singinUser method with params email and password ',
-      async(() => {
-        const userData = { email: 'test', password: 'test'};
+    it('Should call singinUser method with params email and password ', () => {
+        const userData = { email: 'test@test.com', password: '12345678'};
         component.signinForm.value = userData;
         const spy = spyOn(component.authService, 'singinUser');
         component.onSingin();
         expect(component.signinForm.value).toEqual(userData);
         expect(spy).toHaveBeenCalledWith(userData.email, userData.password);
-      }));
+      });
   });
 
   describe('onCloseForm method', () => {

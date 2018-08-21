@@ -10,7 +10,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Local server
 `ng serve` - development local server.
-`ng serve -c staging` - staging local server.
 `ng serve --prod` - prod local server.
 Navigate to `http://localhost:3000/`.
 

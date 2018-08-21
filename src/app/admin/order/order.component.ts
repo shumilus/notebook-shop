@@ -20,6 +20,10 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.getOrders();
+  }
+
+  getOrders() {
     this.orderService.getOrders();
     this.orderChangedSubscription = this.productService.orderChanged
       .subscribe(
@@ -32,18 +36,10 @@ export class OrderComponent implements OnInit, OnDestroy {
 
   onDelete(index: number) {
     this.productService.deleteOrder(index);
-    this.saveOrder();
-  }
-
-  saveOrder() {
-    this.orderService.storageOrders().subscribe(
-      (response: any) => {
-        console.log('order delete!');
-      });
+    this.orderService.storageOrders('delete');
   }
 
   ngOnDestroy() {
-    // this.orderChangedSubscription.unsubscribe();
     this.commonService.checkSubscription(this.orderChangedSubscription);
   }
 

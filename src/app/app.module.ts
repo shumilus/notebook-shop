@@ -25,6 +25,7 @@ import {GoodsItemComponent} from './goods/goods-item/goods-item.component';
 import {GoodsDetailComponent} from './goods/goods-detail/goods-detail.component';
 import {GoodsListComponent} from './goods/goods-list/goods-list.component';
 import {APP_BASE_HREF} from "@angular/common";
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import {APP_BASE_HREF} from "@angular/common";
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
+    MatIconModule,
     BrowserAnimationsModule,
     CoreModule,
     ToasterModule.forRoot(),

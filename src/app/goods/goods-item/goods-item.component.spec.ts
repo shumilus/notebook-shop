@@ -7,9 +7,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {ToasterService} from "angular2-toaster";
 import {CommonService} from "@shared/services/common.service";
 import {CartService} from "@shared/services/cart.service";
-import {MockCartService, product} from "@shared/unit-test-services/mock-cart.service";
 
 import {GoodsItemComponent} from "./goods-item.component";
+import {product} from "@shared/unit-test-services/mock-product.service";
 
 describe('GoodsItemComponent', () => {
   let component: any;
@@ -24,9 +24,9 @@ describe('GoodsItemComponent', () => {
         AppModule
       ],
       providers: [
-        {provide: CartService, useClass: MockCartService},
         ToasterService,
-        CommonService
+        CommonService,
+        CartService
       ],
       schemas: [
         // CUSTOM_ELEMENTS_SCHEMA

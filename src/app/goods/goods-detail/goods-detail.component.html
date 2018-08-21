@@ -1,7 +1,10 @@
 <div class="detail-container">
   <div class="row">
     <div class="btn-group to-goodslist">
-      <button type="button" class="btn btn-danger" (click)="toGoodsList()">To Goodslist</button>
+      <button type="button"
+              color="warn"
+              mat-raised-button
+              (click)="toGoodsList()">To Goodslist</button>
     </div>
   </div>
 
@@ -20,7 +23,9 @@
       <div class="col-xs-12">
         <div class="btn-group">
           <button type="button"
-                  class="btn btn-primary"
+                  class="btn-add"
+                  mat-raised-button
+                  mat-primary
                   (click)="onAddToCart()">Add to cart</button>
         </div>
       </div>

@@ -1,76 +1,103 @@
 <div class="row cart_container">
-  <div class="col-xs-7 title">
-    <h5>Product</h5>
-    <h5>Name</h5>
-    <h5>Price</h5>
-  </div>
-  <div class="col-xs-7">
-    <div *ngFor="let goodsItem of cartList; let i = index">
-      <div class="row">
-        <div class="col-md-12" >
-          <a class="list-group-item clearfix"
-             routerLinkActive="active">
-            <div class="inlain decor">
-              <div class="block">
-                <img [src]="goodsItem.imagePath" alt="{{ goodsItem.name}}" class="img-responsive" style="max-height: 70px;">
-              </div>
-              <div class="block">
-                <h5 class="list-group-item-heading">The notebook "{{ goodsItem.name }}"</h5>
-              </div>
-              <div class="block"> Price: {{ goodsItem.price }} $</div>
-              <button class="btn btn-primary delete" (click)="onDelete(i, goodsItem.price)">Delete</button>
+    <div class="col-xs-7 title">
+        <h5>Product</h5>
+        <h5>Name</h5>
+        <h5>Price</h5>
+    </div>
+    <div class="col-xs-7">
+        <div *ngFor="let goodsItem of cartList; let i = index">
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="list-group-item clearfix"
+                       routerLinkActive="active">
+                        <div class="inlain decor">
+                            <div class="block">
+                                <img [src]="goodsItem.imagePath" alt="{{ goodsItem.name}}" class="img-responsive"
+                                     style="max-height: 70px;">
+                            </div>
+                            <div class="block">
+                                <h5 class="list-group-item-heading">The notebook "{{ goodsItem.name }}"</h5>
+                            </div>
+                            <div class="block"> Price: {{ goodsItem.price }} $</div>
+                            <button class="delete"
+                                    (click)="onDelete(i, goodsItem.price)"
+                                    color="warn"
+                                    mat-raised-button>Delete
+                            </button>
+                        </div>
+                    </a>
+                    <br>
+                </div>
             </div>
-          </a>
-          <br>
         </div>
-      </div>
+        <div *ngIf="cartList.length === 0">
+            <h3>You have not selected products yet!</h3>
+        </div>
+        <div>
+            <h4 class="total">Total: {{ sum }} $</h4>
+        </div>
     </div>
-    <div *ngIf="cartList.length === 0">
-      <h3>You have not selected products yet!</h3>
-    </div>
-    <div>
-      <h4 class="total">Total: {{ sum }} $</h4>
-    </div>
-  </div>
 
-  <div class="col-xs-5 order" *ngIf="cartList.length">
-    <form [formGroup]="buyerForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text"
-               name="name"
-               id="name"
-               class="form-control"
-               formControlName="name">
-      </div>
-      <div class="form-group">
-        <label for="surname">Surname</label>
-        <input type="text"
-               name="surname"
-               id="surname"
-               class="form-control"
-               formControlName="surname">
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="text"
-               name="phone"
-               id="phone"
-               class="form-control"
-               formControlName="phone">
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email"
-               name="email"
-               id="email"
-               class="form-control"
-               formControlName="email">
-      </div>
-      <button type="submit"
-              class="btn btn-primary to_order"
-              [disabled]="!buyerForm.valid">To order</button>
-      <br>
-    </form>
-  </div>
+    <div class="col-xs-5 order" *ngIf="cartList.length">
+        <form [formGroup]="buyerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <mat-form-field class="input">
+                    <input type="text"
+                           placeholder="Name"
+                           name="name"
+                           id="name"
+                           matInput
+                           formControlName="name">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="input">
+                    <input type="text"
+                           placeholder="Surname"
+                           name="surname"
+                           id="surname"
+                           matInput
+                           formControlName="surname">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="input">
+                    <span matPrefix>+ 3 &nbsp;</span>
+                    <input type="tel"
+                           placeholder="Phone"
+                           matInput
+                           name="phone"
+                           id="phone"
+                           formControlName="phone">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+
+            </div>
+            <div class="form-group">
+                <mat-form-field class="input">
+                    <input type="email"
+                           matInput
+                           name="email"
+                           id="email"
+                           placeholder="Email"
+                           formControlName="email">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                    <mat-error *ngIf="buyerForm.get('email').errors && !buyerForm.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="buyerForm.hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <button type="submit"
+                    class="mat-primary to_order"
+                    mat-raised-button
+                    [disabled]="!buyerForm.valid">To order
+            </button>
+            <br>
+        </form>
+    </div>
 </div>

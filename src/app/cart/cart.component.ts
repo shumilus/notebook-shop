@@ -1,13 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Goods} from '@shared/models/goods.model';
-import {CartService} from '@shared/services/cart.service';
 import {Subscription} from 'rxjs';
 import {AuthService} from '@shared/services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ProductService} from '@shared/services/product.service';
 import {Order} from '@shared/models/order.model';
+
 import {OrderService} from "@shared/services/order.service";
 import {CommonService} from "@shared/services/common.service";
+import {ProductService} from '@shared/services/product.service';
+import {CartService} from '@shared/services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -33,6 +34,13 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.initForm();
+    this.getUserEmail();
+    this.cartService.getCart();
+    this.getGoods();
+    this.getSum();
+  }
+
+  getUserEmail() {
     this.userSubscription = this.authService.userSubject
       .subscribe(
         (user: { email: string, isAdmin: boolean }) => {
@@ -40,8 +48,9 @@ export class CartComponent implements OnInit, OnDestroy {
           this.buyerForm.controls.email.setValue(this.userEmail);
         }
       );
-    this.cartService.getCart();
+  }
 
+  getGoods() {
     this.cartSubscription = this.cartService.cartChanged
       .subscribe(
         (goods: Goods[]) => {
@@ -49,7 +58,6 @@ export class CartComponent implements OnInit, OnDestroy {
         }
       );
     this.cartList = this.cartService.getGoods();
-    this.getSum();
   }
 
   getSum() {
@@ -69,19 +77,11 @@ export class CartComponent implements OnInit, OnDestroy {
     this.cartService.clearCart();
     this.buyerForm.reset();
     this.sum = 0;
-    this.saveOrder();
-  }
-
-  saveOrder() {
-    this.orderService.storageOrders().subscribe(
-      (response: any) => {
-        // console.log('order saved!');
-      });
+    this.orderService.storageOrders('add');
   }
 
   onAddOrder() {
     this.order = this.buyerForm.value;
-    console.log(this.order);
     this.order.goods = this.cartList;
     this.productService.addOrder(this.order);
   }
@@ -98,8 +98,6 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.cartSubscription.unsubscribe();
-    // this.userSubscription.unsubscribe();
     this.commonService.checkSubscription(this.cartSubscription);
     this.commonService.checkSubscription(this.userSubscription);
   }

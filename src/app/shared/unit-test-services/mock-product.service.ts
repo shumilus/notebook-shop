@@ -1,14 +1,14 @@
 import {Goods} from "@shared/models/goods.model";
-import {Observable} from "rxjs";
+import {of} from "rxjs";
 import {Order} from "@shared/models/order.model";
 
-export const goods: Goods = {
+export const product: Goods = {
   name: 'test',
   description: 'test',
   imagePath: 'test',
   pages: 'test',
   coverMaterial: 'test',
-  price: 'test',
+  price: '5',
   id: 0
 };
 
@@ -17,19 +17,19 @@ export const order: Order = {
   surname: 'test',
   phone: 'test',
   email: 'test',
-  goods: [goods]
+  goods: [product]
 };
 
 export class MockProductService {
-  productsSubject = Observable.of([goods]);
-  orderChanged = Observable.of([order]);
+  productsSubject = of([product]);
+  orderChanged = of([order]);
 
   getCurrentProduct() {
-    return [goods];
+    return [product, product];
   }
 
   getProduct(index: number) {
-    return goods[index];
+    return product[index];
   }
 
   getOrders() {
@@ -37,6 +37,12 @@ export class MockProductService {
   }
 
   deleteOrder(index: number) {
+  }
+
+  addOrder() {
+  }
+
+  storageGoods() {
 
   }
 

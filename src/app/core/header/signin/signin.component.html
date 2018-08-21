@@ -3,7 +3,7 @@
   <mat-dialog-content >
     <mat-form-field class="input">
       <input matInput
-             placeholder="Enail"
+             placeholder="Email"
              formControlName="email" type="email">
     </mat-form-field>
     <i class="fas fa-ban red-stop"
@@ -26,7 +26,9 @@
           *ngIf="!signinForm.get('password').valid && signinForm.get('email').value && signinForm.get('email').value">Password should have more then 8 symbol</span>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button class="mat-raised-button" mat-dialog-close mat-button>Close</button>
+    <button class="mat-raised-button"
+            mat-dialog-close
+            mat-button>Close</button>
     <button class="mat-raised-button mat-primary"
             mat-button
             type="submit"

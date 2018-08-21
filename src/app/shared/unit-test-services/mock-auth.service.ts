@@ -1,4 +1,4 @@
-import {Observable} from "rxjs";
+import {of} from "rxjs";
 
 export const user = {
   email: 'test',
@@ -6,10 +6,10 @@ export const user = {
 };
 
 export class MockAuthService {
-  userSubject = Observable.of(user);
+  userSubject = of(user);
 
   logout() {
-    Observable.of(null);
+    of(null);
   }
 
   singinUser(emai: string, password: string) {

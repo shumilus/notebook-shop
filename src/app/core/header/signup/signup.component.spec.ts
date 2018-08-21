@@ -58,11 +58,36 @@ describe('SignupComponent', () => {
     it(' init form',
       async(() => {
         component.initForm();
-        expect(component.signupForm.value.email).toEqual(null);
-        expect(component.signupForm.value.password).toEqual(null);
-        expect(component.signupForm.value.confirmedPassword).toEqual(null);
+        expect(component.signupForm.value.email).toBe(null);
+        expect(component.signupForm.value.password).toBe(null);
+        expect(component.signupForm.value.confirmedPassword).toBe(null);
       }));
   });
+
+  it('form invalid when empty', () => {
+      expect(component.signupForm.valid).toBeFalsy();
+    }
+  );
+
+  it('email field validity', () => {
+    let email = component.signupForm.controls['email'];
+    expect(email.valid).toBeFalsy();
+  });
+
+  // it('submitting a form emits a user', () => {
+  //   expect(component.signupForm.valid).toBeFalsy();
+  //   component.signupForm.controls['email'].setValue("test@test.com");
+  //   component.signupForm.controls['password'].setValue("12345678");
+  //   component.signupForm.controls['confirmedPassword'].setValue("12345678");
+  //   expect(component.signupForm.valid).toBeTruthy();
+  // });
+
+  // describe('confirmPassword method', () => {
+  //   it(' confirm password',
+  //     async(() => {
+  //
+  //     }));
+  // });
 
   describe('onSingup method', () => {
     it('Should call singupUser method with params email and password ',

@@ -1,19 +1,21 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {AppModule} from "../../app.module";
+import {AppModule} from "../../../app.module";
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 
 import {ToasterService} from "angular2-toaster";
 import {CommonService} from "@shared/services/common.service";
-
+import {ProductService} from "@shared/services/product.service";
+import {MockProductService, product} from "@shared/unit-test-services/mock-product.service";
+import {MockAuthService} from "@shared/unit-test-services/mock-auth.service";
 import {AuthService} from "@shared/services/auth.service";
-import {HeaderComponent} from "./header.component";
-import {MockAuthService, user} from "@shared/unit-test-services/mock-auth.service";
 
-describe('HeaderComponent', () => {
+import {AdminGoodsListComponent} from "./admin-goods-list.component";
+
+describe('AdminGoodsListComponent', () => {
   let component: any;
-  let fixture: ComponentFixture<HeaderComponent>;
+  let fixture: ComponentFixture<AdminGoodsListComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [],
@@ -25,6 +27,7 @@ describe('HeaderComponent', () => {
       ],
       providers: [
         {provide: AuthService, useClass: MockAuthService},
+        {provide: ProductService, useClass: MockProductService},
         ToasterService,
         CommonService
       ],
@@ -32,53 +35,33 @@ describe('HeaderComponent', () => {
         // CUSTOM_ELEMENTS_SCHEMA
       ]
     }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(HeaderComponent);
+      fixture = TestBed.createComponent(AdminGoodsListComponent);
       component = fixture.debugElement.componentInstance;
       component.ngOnInit();
     });
-
   }));
 
-  it('Should create HeaderComponent', async(() => {
+  it('Should create AdminGoodsListComponent', async(() => {
     expect(component).toBeTruthy();
   }));
 
   describe('ngOnInit method', () => {
-    it('get user data',
+    it('init getCurrentProduct method',
       async(() => {
+        component.goodsList = [product];
+        const spy = spyOn(component.productService, 'getCurrentProduct');
         component.ngOnInit();
-        expect(component.user).toEqual(user);
-      }));
-  });
-
-  describe('openForm method', () => {
-    it('Should open singup or singin modal window',
-      async(() => {
-        const signStatus = 'test';
-        const spy = spyOn(component.dialog, 'open');
-        const params = {
-          width: '450px',
-        };
-        component.openForm(signStatus);
-        expect(spy).toHaveBeenCalledWith(jasmine.any(Function), params);
-      }));
-  });
-
-  describe('onLogout method', () => {
-    it('Should left account',
-      async(() => {
-        const spy = spyOn(component.authService, 'logout');
-        component.onLogout();
         expect(spy).toHaveBeenCalledWith();
+        expect(component.goodsList).toEqual([product]);
       }));
   });
 
   describe('ngOnDestroy method', () => {
-    it('Should unsubscribe',
+    it('Should unsubscribe from productsSubject',
       async(() => {
-        const spy = spyOn(component.userSubscription, 'unsubscribe');
+        const spy = spyOn(component.commonService, 'checkSubscription');
         component.ngOnDestroy();
-        expect(spy).toHaveBeenCalled();
+        expect(spy).toHaveBeenCalledWith(component.productsSubscription);
       }));
   });
 

@@ -38,7 +38,6 @@ export class ProductService {
   deleteOrder(index: number) {
     this.orderList.splice(index, 1);
     this.orderUpdate();
-    this.toasterService.pop('success', 'You delete order!');
   }
 
   orderUpdate() {
@@ -62,7 +61,7 @@ export class ProductService {
   }
 
   getCurrentProduct() {
-    if (this.productsSubject.value === null){
+    if (this.productsSubject.value === null) {
       return [];
     }
     return this.productsSubject.value;
@@ -71,10 +70,10 @@ export class ProductService {
   getProducts() {
     this.http.get('https://myfirstangular6project.firebaseio.com/goods.json')
       .map(
-        (response:any) => {
+        (response: any) => {
           const goods: Goods[] = response;
           let index = 0;
-          for (let product of goods){
+          for (let product of goods) {
             product.id = index++;
           }
           return goods;

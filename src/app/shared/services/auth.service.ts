@@ -9,7 +9,7 @@ import {environment} from '../../../environments/environment';
 @Injectable()
 export class AuthService {
   userSubject = new BehaviorSubject<UserData>(null);
-  adminEmail = 'test@test.com';
+  adminEmail = 'admin@admin.com';
 
   constructor(private toasterService: ToasterService,
               private router: Router) {

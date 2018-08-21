@@ -5,7 +5,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss']
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent {
   page = '';
   covMat = '';
   minPrice = '';
@@ -15,12 +15,6 @@ export class FilterComponent implements OnInit {
   @Output() filterCovMat = new EventEmitter<string>();
   @Output() filterMinPrice = new EventEmitter<string>();
   @Output() filterMaxPrice = new EventEmitter<string>();
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 
   sendPageParams(params: string) {
     this.filterPage.emit(params);

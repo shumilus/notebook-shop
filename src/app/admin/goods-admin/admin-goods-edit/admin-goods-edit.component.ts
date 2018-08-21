@@ -82,7 +82,9 @@ export class AdminGoodsEditComponent implements OnInit {
 
   onCancel() {
     this.dialog.closeAll();
-    this.router.navigate(['/admin'], {relativeTo: this.route});
+    this.router.navigate(['/admin'],
+      // {relativeTo: this.route}
+      );
   }
 
 }

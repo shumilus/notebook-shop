@@ -6,13 +6,12 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 import {ToasterService} from "angular2-toaster";
 import {CommonService} from "@shared/services/common.service";
-
-import {OrderComponent} from "./order.component";
-import {Observable} from "rxjs";
 import {MockOrderService} from "@shared/unit-test-services/mock-order.service";
 import {OrderService} from "@shared/services/order.service";
 import {ProductService} from "@shared/services/product.service";
 import {MockProductService, order} from "@shared/unit-test-services/mock-product.service";
+
+import {OrderComponent} from "./order.component";
 
 describe('OrderComponent', () => {
   let component: any;
@@ -40,7 +39,6 @@ describe('OrderComponent', () => {
       component = fixture.debugElement.componentInstance;
       component.ngOnInit();
     });
-
   }));
 
   it('Should create OrderComponent', async(() => {
@@ -48,6 +46,13 @@ describe('OrderComponent', () => {
   }));
 
   describe('ngOnInit method', () => {
+    it('init getOrders method',
+      async(() => {
+        component.ngOnInit();
+      }));
+  });
+
+  describe('getOrders method', () => {
     it('get order from local storage and check on change of orderList',
       async(() => {
         const spy = spyOn(component.orderService, 'getOrders');
@@ -63,22 +68,13 @@ describe('OrderComponent', () => {
   describe('onDelete method', () => {
     it('delete order from order list and save new orderList in local storage',
       async(() => {
+        const flag = 'delete';
         const index = 1;
         const spy = spyOn(component.productService, 'deleteOrder');
-        const spySaveOrder = spyOn(component, 'saveOrder');
+        const spySaveOrder = spyOn(component.orderService, 'storageOrders');
         component.onDelete(index);
         expect(spy).toHaveBeenCalledWith(index);
-        expect(spySaveOrder).toHaveBeenCalledWith();
-      }));
-  });
-
-
-  describe('saveOrder method', () => {
-    it('save orderList in fireBase',
-      async(() => {
-        const spy = spyOn(component.orderService, 'storageOrders').and.returnValue(Observable.of([order]));
-        component.saveOrder();
-        expect(spy).toHaveBeenCalledWith();
+        expect(spySaveOrder).toHaveBeenCalledWith(flag);
       }));
   });
 

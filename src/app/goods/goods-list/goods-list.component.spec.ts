@@ -5,7 +5,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 
 import {ProductService} from "@shared/services/product.service";
-import {goods, MockProductService} from "@shared/unit-test-services/mock-product.service";
+import {MockProductService, product} from "@shared/unit-test-services/mock-product.service";
 import {ToasterService} from "angular2-toaster";
 import {CommonService} from "@shared/services/common.service";
 
@@ -49,7 +49,7 @@ describe('GoodsListComponent', () => {
         const spy = spyOn(component.productService, 'getCurrentProduct');
         // const spyProductsSubject = spyOn(component.productService, 'productsSubject');
         component.ngOnInit();
-        expect(component.goodsList).toEqual([goods]);
+        expect(component.goodsList).toEqual([product]);
         expect(spy).toHaveBeenCalledWith();
       }));
   });

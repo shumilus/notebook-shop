@@ -5,12 +5,12 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 
 import {ProductService} from "@shared/services/product.service";
-import {goods, MockProductService} from "@shared/unit-test-services/mock-product.service";
+import {MockProductService, product} from "@shared/unit-test-services/mock-product.service";
 import {ToasterService} from "angular2-toaster";
 import {CommonService} from "@shared/services/common.service";
 
 import {GoodsDetailComponent} from "./goods-detail.component";
-import {product} from "@shared/unit-test-services/mock-cart.service";
+import {CartService} from "@shared/services/cart.service";
 
 describe('GoodsDetailComponent', () => {
   let component: any;
@@ -27,7 +27,8 @@ describe('GoodsDetailComponent', () => {
       providers: [
         {provide: ProductService, useClass: MockProductService},
         ToasterService,
-        CommonService
+        CommonService,
+        CartService
       ],
       schemas: [
         // CUSTOM_ELEMENTS_SCHEMA
@@ -48,11 +49,11 @@ describe('GoodsDetailComponent', () => {
     it('Should call getProduct and watch on change id',
       async(() => {
         component.id = 1;
-        const spy = spyOn(component.productService, 'getProduct').and.returnValue(goods);
+        const spy = spyOn(component.productService, 'getProduct').and.returnValue(product);
         // const spyProductsSubject = spyOn(component.productService, 'productsSubject');
         component.ngOnInit();
         expect(spy).toHaveBeenCalledWith(component.id);
-        expect(component.goods).toEqual(goods);
+        expect(component.goods).toEqual(product);
       }));
   });
 
