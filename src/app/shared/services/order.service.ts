@@ -8,7 +8,14 @@ import {ToasterService} from "angular2-toaster";
 
 @Injectable()
 export class OrderService {
-
+  /**
+   * @summary Order service constructor.
+   * @param http - HttpClient service
+   * @param productService - Product service
+   * @param authService - Auth service
+   * @param cartService - Cart service
+   * @param toasterService - Toaster service (toaster)
+   */
   constructor(private http: HttpClient,
               private cartService: CartService,
               private authService: AuthService,
@@ -16,6 +23,9 @@ export class OrderService {
               private toasterService: ToasterService) {
   }
 
+  /**
+   * Save order to firebase
+   */
   storageOrders(flag: string) {
     const token = this.authService.getToken().token;
     this.http.put(`https://myfirstangular6project.firebaseio.com/order.json?auth=${token}`,
@@ -28,6 +38,9 @@ export class OrderService {
       });
   }
 
+  /**
+   * Get order from firebase
+   */
   getOrders() {
     this.http.get('https://myfirstangular6project.firebaseio.com/order.json')
       .subscribe(

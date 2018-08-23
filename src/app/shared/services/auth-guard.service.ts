@@ -8,28 +8,36 @@ import {Observable} from "rxjs/internal/Observable";
 export class AuthGuardService implements CanActivate {
     subscription: Subscription;
 
-  constructor(private authService: AuthService) {}
-    canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-        if (this.authService.getToken()) {
-            return true;
-        } else {
-            return new Promise((resolve, reject) => {
-                this.subscription = this.authService.userSubject.subscribe(
-                    (user) => {
-                        if (!user) {
-                            return;
-                        }
-                        this.subscription.unsubscribe();
-                        return resolve(this.authService.isAuthenticated());
-                    },
-                    (error) => {
-                        this.subscription.unsubscribe();
-                        return resolve(false);
-                    }
-                );
-            });
-        }
-    }
+  /**
+   * @summary AuthGuard service constructor.
+   * @param authService - Auth service
+   */
+  constructor(private authService: AuthService) {
+  }
 
+  /**
+   * Check allow access for admin
+   */
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.authService.getToken()) {
+      return true;
+    } else {
+      return new Promise((resolve, reject) => {
+        this.subscription = this.authService.userSubject.subscribe(
+          (user) => {
+            if (!user) {
+              return;
+            }
+            this.subscription.unsubscribe();
+            return resolve(this.authService.isAuthenticated());
+          },
+          (error) => {
+            this.subscription.unsubscribe();
+            return resolve(false);
+          }
+        );
+      });
+    }
+  }
 }
 

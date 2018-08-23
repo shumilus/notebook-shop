@@ -34,7 +34,8 @@
             <h3>You have not selected products yet!</h3>
         </div>
         <div>
-            <h4 class="total">Total: {{ sum }} $</h4>
+            <h4 class="total">Total: {{ cartData.sum }} $</h4>
+            <h4 class="total">Total: {{ cartData.total }} pcs.</h4>
         </div>
     </div>
 
@@ -73,12 +74,12 @@
                            formControlName="phone">
                     <mat-icon matSuffix>mode_edit</mat-icon>
                 </mat-form-field>
-
             </div>
             <div class="form-group">
                 <mat-form-field class="input">
                     <input type="email"
                            matInput
+                           pattern="(?=.*[.]).*$"
                            name="email"
                            id="email"
                            placeholder="Email"

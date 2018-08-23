@@ -2,7 +2,9 @@ import {FormControl} from '@angular/forms';
 import {Subscription} from "rxjs";
 
 export class CommonService {
-
+  /**
+   * Check confirm password
+   */
   confirmPassword (otherControlName: string) {
     let thisControl: FormControl;
     let otherControl: FormControl;
@@ -33,7 +35,9 @@ export class CommonService {
       return null;
     };
   }
-
+  /**
+   * cleanup logic
+   */
   checkSubscription( subscription: Subscription) {
     if(subscription) {
       subscription.unsubscribe();

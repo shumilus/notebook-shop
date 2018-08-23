@@ -1,17 +1,17 @@
 <br>
 <a class="list-group-item clearfix"
-   [routerLink]="[goods.id]"
+   [routerLink]="[product.id]"
    routerLinkActive="active">
   <div class="pull-left">
-    <h4 class="list-group-item-heading">{{ goods.name }}</h4>
-    <p class="list-group-item-text">{{ goods.description | shorten: 30 }}</p>
-    <p class="list-group-item-text">Price: {{ goods.price }} $</p>
-    <p class="list-group-item-text">Pages: {{ goods.pages }}</p>
-    <p class="list-group-item-text">Material: {{ goods.coverMaterial }}</p>
+    <h4 class="list-group-item-heading">{{ product.name }}</h4>
+    <p class="list-group-item-text">{{ product.description | shorten: 30 }}</p>
+    <p class="list-group-item-text">Price: {{ product.price }} $</p>
+    <p class="list-group-item-text">Pages: {{ product.pages }}</p>
+    <p class="list-group-item-text">Material: {{ product.coverMaterial }}</p>
   </div>
   <span class="pull-right">
-        <img [src]="goods.imagePath"
-             alt="{{ goods.name}}"
+        <img [src]="product.imagePath"
+             alt="{{ product.name}}"
              class="img-responsive"
              style="max-height: 90px;">
   </span>

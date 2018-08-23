@@ -9,7 +9,7 @@ import {GoodsListComponent} from './goods/goods-list/goods-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'goods', component: GoodsComponent, children: [
+  { path: 'products', component: GoodsComponent, children: [
       { path: '', component: GoodsListComponent},
       { path: ':id', component: GoodsDetailComponent}
     ]},
@@ -24,5 +24,4 @@ const appRoutes: Routes = [
 })
 
 export class AppRoutingModule {
-
 }

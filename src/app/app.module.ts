@@ -8,6 +8,8 @@ import {CoreModule} from './core/core.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AdminModule} from './admin/admin.module';
+import {MatIconModule} from '@angular/material/icon';
+import {APP_BASE_HREF} from "@angular/common";
 
 import {CartService} from '@shared/services/cart.service';
 import {AuthGuardService} from '@shared/services/auth-guard.service';
@@ -24,9 +26,6 @@ import {CartComponent} from './cart/cart.component';
 import {GoodsItemComponent} from './goods/goods-item/goods-item.component';
 import {GoodsDetailComponent} from './goods/goods-detail/goods-detail.component';
 import {GoodsListComponent} from './goods/goods-list/goods-list.component';
-import {APP_BASE_HREF} from "@angular/common";
-import {MatIconModule} from '@angular/material/icon';
-
 
 @NgModule({
   declarations: [
@@ -45,12 +44,12 @@ import {MatIconModule} from '@angular/material/icon';
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
-    MatIconModule,
     BrowserAnimationsModule,
     CoreModule,
     ToasterModule.forRoot(),
     AdminModule,
     NgxPaginationModule,
+    MatIconModule
   ],
   providers: [
     AuthService,
@@ -64,5 +63,6 @@ import {MatIconModule} from '@angular/material/icon';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

@@ -1,30 +1,30 @@
 <div class="row">
     <div class="col-xs-12">
-        <h1>Tne notebook "{{ goods?.name }}"</h1>
+        <h1>The notebook "{{ product?.name }}"</h1>
     </div>
 </div>
 
-<div class="container">
+<div class="block">
     <div class="row">
         <div class="col-xs-12">
-            <img src="{{ goods?.imagePath }}" alt="{{ goods?.name }}" class="img-responsive" style="max-height: 250px">
+            <img src="{{ product?.imagePath }}" alt="{{ product?.name }}" class="img-responsive" style="max-height: 250px">
         </div>
     </div>
     <br>
     <div class="row">
-        <div class="col-xs-12">Description: {{ goods?.description }}</div>
+        <div class="col-xs-12">Description: {{ product?.description }}</div>
     </div>
     <br>
     <div class="row">
-        <div class="col-xs-12">Price: {{ goods?.price }} $</div>
+        <div class="col-xs-12">Price: {{ product?.price }} $</div>
     </div>
     <br>
     <div class="row">
-        <div class="col-xs-12">Number of page: {{ goods?.pages }}</div>
+        <div class="col-xs-12">Number of page: {{ product?.pages }}</div>
     </div>
     <br>
     <div class="row">
-        <div class="col-xs-12">Cover material: {{ goods?.coverMaterial }}</div>
+        <div class="col-xs-12">Cover material: {{ product?.coverMaterial }}</div>
     </div>
 </div>
 <br>

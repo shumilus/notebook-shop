@@ -66,9 +66,9 @@ describe('AdminGoodsDetailComponent', () => {
         component.id = 1;
         const spy = spyOn(component.productService, 'getProduct');
         component.getProduct();
-        component.goods = product;
+        component.product = product;
         expect(spy).toHaveBeenCalledWith(component.id);
-        expect(component.goods).toEqual(product);
+        expect(component.product).toEqual(product);
       }));
   });
 

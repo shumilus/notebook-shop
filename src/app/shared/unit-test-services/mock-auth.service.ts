@@ -13,10 +13,16 @@ export class MockAuthService {
   }
 
   singinUser(emai: string, password: string) {
-
   }
 
   singupUser(emai: string, password: string) {
-
   }
+
+  initializeApp() {
+  }
+
+  checkLogining() {
+    of({email: 'test@test.com', isAdmin: true, token: 'test'});
+  }
+
 }

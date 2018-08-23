@@ -11,10 +11,18 @@ export class AuthService {
   userSubject = new BehaviorSubject<UserData>(null);
   adminEmail = 'admin@admin.com';
 
+  /**
+   * @summary Auth service constructor.
+   * @param router - Router service
+   * @param toasterService - Toaster service (toaster)
+   */
   constructor(private toasterService: ToasterService,
               private router: Router) {
   }
 
+  /**
+   * create new user with email and password data
+   */
   singupUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(
@@ -29,10 +37,16 @@ export class AuthService {
       );
   }
 
+  /**
+   * get user token
+   */
   getToken() {
     return this.userSubject.value;
   }
 
+  /**
+   * login user
+   */
   singinUser(email: string, password: string) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
@@ -41,7 +55,6 @@ export class AuthService {
             .then(
               (token: string) => {
                 const isAdmin = this.adminEmail === email;
-                // this.userEmail.next(email);
                 this.userSubject.next({email: email, isAdmin: isAdmin, token: token});
                 this.userSubject.value.token = token;
                 this.toasterService.pop('success', 'You have successfully login!');
@@ -58,6 +71,9 @@ export class AuthService {
       );
   }
 
+  /**
+   * logout user
+   */
   logout() {
     firebase.auth().signOut();
     this.userSubject.next(null);
@@ -65,18 +81,23 @@ export class AuthService {
     this.toasterService.pop('success', 'You left your account!' );
   }
 
+  /**
+   *  Check if admin
+   */
   checkLogining() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         user.getIdToken().then((token) => {
           const isAdmin = this.adminEmail === user.email;
-          // this.userEmail.next(user.email);
           this.userSubject.next({email: user.email, isAdmin: isAdmin, token: token});
         });
       }
     });
   }
 
+  /**
+   *  Check user is already login
+   */
   isAuthenticated() {
     return this.userSubject.value.token != null;
   }

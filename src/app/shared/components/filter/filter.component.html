@@ -1,38 +1,50 @@
 <div class="pipe_container">
   <div>
     <h5 class="filter-name">Price filter</h5>
-    <label for="min_price">Min: </label>
-    <input type="text" id="min_price" [(ngModel)]="minPrice" (input)="minTest()">
+    <!--<label for="min_price">Min: </label>-->
+    <!--<input type="text" id="min_price" [(ngModel)]="minPrice" (input)="minPriceFilter()">-->
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Min:" value="" [(ngModel)]="minPrice" (input)="minPriceFilter()">
+    </mat-form-field>
     <br>
-    <label for="min_price">Max: </label>
-    <input type="text" id="max_price" [(ngModel)]="maxPrice" (input)="maxTest()">
+    <!--<label for="max_price">Max: </label>-->
+    <!--<input type="text" id="max_price" [(ngModel)]="maxPrice" (input)="maxPriceFilter()">-->
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Min:" value="" [(ngModel)]="maxPrice" (input)="maxPriceFilter()">
+    </mat-form-field>
   </div>
   <hr>
 
   <div>
     <h5 class="filter-name">Pages filter</h5>
-    <label for="pages">Pages: </label>
-    <select [(ngModel)]="page"
-            (change)="sendPageParams(page)"
-            id="pages">
-      <option value="" selected >Choose number of pages</option>
-      <option value="80">80</option>
-      <option value="120">120</option>
-      <option value="160">160</option>
-    </select>
+    <label for="pages">Pages: </label><br>
+    <mat-form-field>
+      <mat-select [(ngModel)]="page"
+                  (ngModelChange)="sendPageParams(page)"
+                  id="pages">
+        <mat-option>None</mat-option>
+        <mat-option value="80">80</mat-option>
+        <mat-option value="120">120</mat-option>
+        <mat-option value="160">160</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>You selected: {{page}}</p>
   </div>
   <hr>
 
-  <div>
+  <div >
     <h5 class="filter-name">material filter</h5>
     <label for="coverMaterial" class="cover">Cover material: </label>
-    <select [(ngModel)]="covMat"
-            (change)="sendCovMatParams(covMat)"
-            id="coverMaterial">
-      <option value="" selected >Choose cover material</option>
-      <option value="Laminated cardboard">Laminated cardboard</option>
-      <option value="skin">Skin</option>
-      <option value="pvh">pvh</option>
-    </select>
+    <mat-form-field>
+      <mat-select [(ngModel)]="covMat"
+                  (ngModelChange)="sendCovMatParams(covMat)"
+                  id="coverMaterial">
+        <mat-option>None</mat-option>
+        <mat-option value="Laminated cardboard">Laminated cardboard</mat-option>
+        <mat-option value="skin">Skin</mat-option>
+        <mat-option value="pvh">pvh</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p class="select">You selected: {{covMat}}</p>
   </div>
 </div>

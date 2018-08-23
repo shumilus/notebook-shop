@@ -6,7 +6,7 @@
                     | pagesFilter:filteredCovMat:'coverMaterial'
                     | priceFilter:filteredMinPrice:filteredMaxPrice:'price'
                     | paginate: { itemsPerPage: 8, currentPage: page }; let i = index"
-                      [goods]="goodsItem"
+                      [product]="goodsItem"
                       [index]="i"></app-goods-item>
       <div *ngIf="!goodsList?.length">
         <h4>There are no goods yet!</h4>

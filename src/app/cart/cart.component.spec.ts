@@ -13,7 +13,6 @@ import {OrderService} from "@shared/services/order.service";
 import {MockOrderService} from "@shared/unit-test-services/mock-order.service";
 
 import {CartComponent} from "./cart.component";
-import {p} from "../../../node_modules/@angular/core/src/render3";
 
 describe('CartComponent', () => {
   let component: any;
@@ -50,19 +49,19 @@ describe('CartComponent', () => {
   }));
 
   describe('ngOnInit method', () => {
-    it('should init getCart, getGoods, getUserEmail, getSum, initForm method',
+    it('should init getCart, getGoods, getUserEmail, getCartData, initForm method',
       async(() => {
 
         const spy = spyOn(component, 'initForm');
         const spyGetUserEmail = spyOn(component, 'getUserEmail');
         const spyGetCart = spyOn(component.cartService, 'getCart');
         const spyGetGoods = spyOn(component.cartService, 'getGoods');
-        const spyGetSum = spyOn(component, 'getSum');
+        const spyGetCartData = spyOn(component, 'getCartData');
         component.ngOnInit();
         expect(spy).toHaveBeenCalledWith();
         expect(spyGetCart).toHaveBeenCalledWith();
         expect(spyGetGoods).toHaveBeenCalledWith();
-        expect(spyGetSum).toHaveBeenCalledWith();
+        expect(spyGetCartData).toHaveBeenCalledWith();
         expect(spyGetUserEmail).toHaveBeenCalledWith();
       }));
   });
@@ -84,18 +83,19 @@ describe('CartComponent', () => {
   //   });
   // });
 
-  describe('getSum method', () => {
-    it('Should calculate sum of products', () => {
+  describe('getCartData method', () => {
+    it('Should calculate sum of products and quantity', () => {
       component.cartList = [product];
-      component.getSum();
-      expect(component.sum).toBe(5);
+      component.getCartData();
+      expect(component.cartData.sum).toBe(5);
+      expect(component.cartData.total).toBe(1);
     });
   });
 
   describe('onDelete method', () => {
     it('Should init deleteProduct and setCart method and deduct price from sum',
       async(() => {
-        component.sum = 10;
+        component.cartData.sum = 10;
         const index = 1;
         const price = 5;
         const spy = spyOn(component.cartService, 'deleteProduct');
@@ -103,7 +103,7 @@ describe('CartComponent', () => {
         component.onDelete(index, price);
         expect(spy).toHaveBeenCalledWith(index);
         expect(spySetCart).toHaveBeenCalledWith();
-        expect(component.sum).toBe(5);
+        expect(component.cartData.sum).toBe(5);
       }));
   });
 

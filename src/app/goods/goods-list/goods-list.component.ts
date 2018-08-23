@@ -9,6 +9,10 @@ import {CommonService} from "@shared/services/common.service";
   templateUrl: './goods-list.component.html',
   styleUrls: ['./goods-list.component.scss']
 })
+
+/**
+ * @summary GoodsList component
+ */
 export class GoodsListComponent implements OnInit, OnDestroy {
   goodsList: Goods[] = [];
   filteredPage = '';
@@ -18,11 +22,18 @@ export class GoodsListComponent implements OnInit, OnDestroy {
   productsSubscription: Subscription;
   page = 1;
 
-
+  /**
+   * @summary GoodsList component constructor.
+   * @param productService - Product service
+   * @param commonService - Common service
+   */
   constructor(private productService: ProductService,
               private commonService: CommonService) {
   }
 
+  /**
+   * @summary Fetch initial data for products list when GoodsList component init and when products list change.
+   */
   ngOnInit() {
     this.goodsList = this.productService.getCurrentProduct();
     this.productsSubscription = this.productService.productsSubject
@@ -32,6 +43,9 @@ export class GoodsListComponent implements OnInit, OnDestroy {
       );
   }
 
+  /**
+   * @summary Cleanup logic.
+   */
   ngOnDestroy() {
     this.commonService.checkSubscription(this.productsSubscription);
   }

@@ -44,10 +44,29 @@ describe('HeaderComponent', () => {
   }));
 
   describe('ngOnInit method', () => {
+    it('init getUser and getCart method',
+      async(() => {
+        const spyGetUser = spyOn(component, 'getUser');
+        const spyGetCart = spyOn(component, 'getCart');
+        component.ngOnInit();
+        expect(spyGetUser).toHaveBeenCalled();
+        expect(spyGetCart).toHaveBeenCalled();
+      }));
+  });
+
+  describe('getUser method', () => {
     it('get user data',
       async(() => {
-        component.ngOnInit();
         expect(component.user).toEqual(user);
+      }));
+  });
+
+  describe('getCart method', () => {
+    it('init getCart method',
+      async(() => {
+        const spy = spyOn(component.cartService, 'getCart');
+        component.getCart();
+        expect(spy).toHaveBeenCalled();
       }));
   });
 
@@ -69,7 +88,7 @@ describe('HeaderComponent', () => {
       async(() => {
         const spy = spyOn(component.authService, 'logout');
         component.onLogout();
-        expect(spy).toHaveBeenCalledWith();
+        expect(spy).toHaveBeenCalled();
       }));
   });
 

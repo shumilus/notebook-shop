@@ -1,70 +1,72 @@
-
-
-<div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <p>Sign up</p>
-    <form [formGroup]="signupForm" (ngSubmit)="onSingup()">
-
-      <mat-dialog-content>
-        <mat-form-field class="input">
+<div class="block">
+  <h3 mat-dialog-title>Sign up</h3>
+  <form [formGroup]="signupForm" (ngSubmit)="onSingup()">
+    <mat-dialog-content>
+      <div class="form-group">
+        <mat-form-field>
           <input matInput
+                 pattern="(?=.*[.]).*$"
                  placeholder="Email"
                  formControlName="email"
                  type="email">
+          <mat-error class="help-block red-stop"
+                     *ngIf="!signupForm.get('email').valid && signupForm.get('email').value">Please enter a valid email name</mat-error>
+          <mat-error class="help-block red-stop"
+                     *ngIf="signupForm.get('email').value === invalidEmail[0]">The name "test@test.com" is reserved!</mat-error>
         </mat-form-field>
         <i class="fas fa-ban red-stop"
            *ngIf="!signupForm.get('email').valid"></i>
         <i class="fas fa-calendar-check green-true"
            *ngIf="signupForm.get('email').valid"></i>
-        <span class="help-block red-stop"
-              *ngIf="!signupForm.get('email').valid && signupForm.get('email').value">Please enter a valid email name</span>
-        <span class="help-block red-stop"
-              *ngIf="signupForm.get('email').value === invalidEmail[0]">The name "test@test.com" is reserved!</span>
         <br>
-        <div>
-          <mat-form-field class="input">
-            <input matInput
-                   placeholder="Password"
-                   name="password"
-                   formControlName="password"
-                   type="password">
-          </mat-form-field>
-          <i class="fas fa-ban red-stop"
-             *ngIf="!signupForm.get('password').valid"></i>
-          <i class="fas fa-calendar-check green-true"
-             *ngIf="signupForm.get('password').valid"></i><br>
-          <span class="help-block red-stop"
-                *ngIf="signupForm.get('password').errors
-                 && signupForm.get('password').value">Password should be more then 8 symbol</span>
-          <mat-form-field class="input">
-            <input matInput
-                   placeholder="Password confirm"
-                   name="confirmedPassword"
-                   formControlName="confirmedPassword"
-                   type="password">
-          </mat-form-field>
-          <i class="fas fa-ban red-stop"
-             *ngIf="!signupForm.get('confirmedPassword').valid"></i>
-          <i class="fas fa-calendar-check green-true"
-             *ngIf="signupForm.get('confirmedPassword').valid"></i><br>
-          <span class="help-block red-stop"
-                *ngIf="signupForm.get('confirmedPassword').errors
-                 && signupForm.get('confirmedPassword').value">Please ensure the passwords match!</span>
-        </div>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput
+                 placeholder="Password"
+                 name="password"
+                 formControlName="password"
+                 type="password">
+          <mat-error class="help-block red-stop"
+                     *ngIf="signupForm.get('password').errors
+                 && signupForm.get('password').value">Password should be more then 8 symbol</mat-error>
+        </mat-form-field>
+        <i class="fas fa-ban red-stop"
+           *ngIf="!signupForm.get('password').valid"></i>
+        <i class="fas fa-calendar-check green-true"
+           *ngIf="signupForm.get('password').valid"></i>
+        <br>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput
+                 placeholder="Password confirm"
+                 name="confirmedPassword"
+                 formControlName="confirmedPassword"
+                 type="password">
+          <mat-error class="help-block red-stop"
+                     *ngIf="signupForm.get('confirmedPassword').errors
+                 && signupForm.get('confirmedPassword').value">Please ensure the passwords match!</mat-error>
+        </mat-form-field>
+        <i class="fas fa-ban red-stop"
+           *ngIf="!signupForm.get('confirmedPassword').valid"></i>
+        <i class="fas fa-calendar-check green-true"
+           *ngIf="signupForm.get('confirmedPassword').valid"></i><br>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button class="mat-raised-button"
+              mat-dialog-close
+              mat-button>Close</button>
+      <button class="mat-raised-button mat-primary"
+              mat-button
+              type="submit"
+              [disabled]="!signupForm.valid"
+              (click)="onCloseForm()">Sing Up</button>
+    </mat-dialog-actions>
+  </form>
 
-      </mat-dialog-content>
 
-      <mat-dialog-actions>
-        <button class="mat-raised-button" mat-dialog-close mat-button>Close</button>
-        <button class="mat-raised-button mat-primary"
-                mat-button
-                type="submit"
-                [disabled]="!signupForm.valid"
-                (click)="onCloseForm()">Sing Up</button>
-      </mat-dialog-actions>
-    </form>
-  </div>
+
+
 </div>
-
-
-

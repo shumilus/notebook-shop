@@ -10,6 +10,9 @@ import {CommonService} from "@shared/services/common.service";
 import {ProductService} from '@shared/services/product.service';
 import {CartService} from '@shared/services/cart.service';
 
+/**
+ * @summary Cart component
+ */
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -18,13 +21,21 @@ import {CartService} from '@shared/services/cart.service';
 
 export class CartComponent implements OnInit, OnDestroy {
   cartList: Goods[];
-  sum = 0;
+  cartData: {sum: number, total: number} = {sum: 0, total: 0};
   cartSubscription: Subscription;
   userSubscription: Subscription;
   userEmail;
   order: Order = new Order();
   buyerForm: FormGroup;
 
+  /**
+   * @summary Cart component constructor.
+   * @param orderService - Order service
+   * @param productService - Product service
+   * @param authService - Auth service
+   * @param cartService - Cart service
+   * @param commonService - Common service
+   */
   constructor(private cartService: CartService,
               private authService: AuthService,
               private orderService: OrderService,
@@ -32,14 +43,20 @@ export class CartComponent implements OnInit, OnDestroy {
               private commonService: CommonService) {
   }
 
+  /**
+   * Initialize the component and call initForm, getUserEmail, getCart, getGoods and getCartData method
+   */
   ngOnInit() {
     this.initForm();
     this.getUserEmail();
     this.cartService.getCart();
     this.getGoods();
-    this.getSum();
+    this.getCartData();
   }
 
+  /**
+   * listener for user email
+   */
   getUserEmail() {
     this.userSubscription = this.authService.userSubject
       .subscribe(
@@ -50,6 +67,9 @@ export class CartComponent implements OnInit, OnDestroy {
       );
   }
 
+  /**
+   * listener for update cart list
+   */
   getGoods() {
     this.cartSubscription = this.cartService.cartChanged
       .subscribe(
@@ -60,32 +80,50 @@ export class CartComponent implements OnInit, OnDestroy {
     this.cartList = this.cartService.getGoods();
   }
 
-  getSum() {
+  /**
+   * Get total and sum value of cart
+   */
+  getCartData() {
     for (const product of this.cartList) {
-      this.sum += +product.price;
+      this.cartData.sum += +product.price;
     }
+    this.cartData.total = this.cartList.length;
   }
 
+  /**
+   * Delete product from cart
+   */
   onDelete(index: number, price: string) {
     this.cartService.deleteProduct(index);
-    this.sum -= +price;
+    this.cartData.sum -= +price;
+    this.cartData.total = this.cartList.length;
     this.cartService.setCart();
   }
 
+  /**
+   * submit order to order list
+   */
   onSubmit() {
     this.onAddOrder();
     this.cartService.clearCart();
     this.buyerForm.reset();
-    this.sum = 0;
+    this.cartData.sum = 0;
+    this.cartData.total = 0;
     this.orderService.storageOrders('add');
   }
 
+  /**
+   * add order to order list
+   */
   onAddOrder() {
     this.order = this.buyerForm.value;
     this.order.goods = this.cartList;
     this.productService.addOrder(this.order);
   }
 
+  /**
+   * init form
+   */
   private initForm() {
     this.buyerForm = new FormGroup({
       'name': new FormControl('', Validators.required),
@@ -97,6 +135,9 @@ export class CartComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Cleanup logic
+   */
   ngOnDestroy() {
     this.commonService.checkSubscription(this.cartSubscription);
     this.commonService.checkSubscription(this.userSubscription);

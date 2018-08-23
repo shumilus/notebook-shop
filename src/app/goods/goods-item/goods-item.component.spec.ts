@@ -45,7 +45,7 @@ describe('GoodsItemComponent', () => {
   describe('onAddToCart method', () => {
     it('Should add product to cart',
       async(() => {
-        component.goods = product;
+        component.product = product;
         const spy = spyOn(component.cartService, 'addCart');
         component.onAddToCart();
         expect(spy).toHaveBeenCalledWith(product);

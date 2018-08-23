@@ -5,29 +5,46 @@ import {ProductService} from '@shared/services/product.service';
 import {MatDialog} from "@angular/material";
 import {AdminGoodsEditComponent} from "../admin-goods-edit/admin-goods-edit.component";
 
+/**
+ * @summary AdminGoodsDetail component
+ */
 @Component({
   selector: 'app-admin-goods-detail',
   templateUrl: './admin-goods-detail.component.html',
   styleUrls: ['./admin-goods-detail.component.scss']
 })
 export class AdminGoodsDetailComponent implements OnInit {
-  goods: Goods;
+  product: Goods;
   id: number;
 
+  /**
+   * @summary AdminGoodsEdit component constructor.
+   * @param router - Router service
+   * @param dialog - MatDialog service (pop-up)
+   * @param route - Activated route service
+   * @param productService - Product service
+   */
   constructor(private productService: ProductService,
               private router: Router,
-              private route: ActivatedRoute, private dialog: MatDialog) {
+              private route: ActivatedRoute,
+              private dialog: MatDialog) {
   }
 
+  /**
+   * Initialize the component and call getProduct method
+   */
   ngOnInit() {
     this.getProduct()
   }
 
+  /**
+   * Get product by id
+   */
   getProduct() {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.goods = this.productService.getProduct(this.id);
+        this.product = this.productService.getProduct(this.id);
       }
     );
   }
@@ -40,6 +57,9 @@ export class AdminGoodsDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * Delete product from product list
+   */
   onDeleteGoods() {
     const products = this.productService.getCurrentProduct();
     products.splice(this.id, 1);

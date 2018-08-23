@@ -5,6 +5,9 @@ import {MatDialog} from '@angular/material';
 import {ToasterService} from 'angular2-toaster';
 import {ProductService} from "@shared/services/product.service";
 
+/**
+ * @summary AdminGoodsEdit component
+ */
 @Component({
   selector: 'app-admin-goods-edit',
   templateUrl: './admin-goods-edit.component.html',
@@ -16,6 +19,14 @@ export class AdminGoodsEditComponent implements OnInit {
   editMode = false;
   goodsForm: FormGroup;
 
+  /**
+   * @summary AdminGoodsEdit component constructor.
+   * @param router - Router service
+   * @param dialog - MatDialog service (pop-up)
+   * @param route - Activated route service
+   * @param productService - Product service
+   * @param toasterService - Toaster service (toaster)
+   */
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
               private router: Router,
@@ -23,6 +34,9 @@ export class AdminGoodsEditComponent implements OnInit {
               private dialog: MatDialog,) {
   }
 
+  /**
+   * Initialize the component and call initForm method
+   */
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
@@ -33,6 +47,9 @@ export class AdminGoodsEditComponent implements OnInit {
     );
   }
 
+  /**
+   * init form for add or edit product
+   */
   private initForm() {
     let goodsName = '';
     let goodsImagePath = '';
@@ -66,6 +83,9 @@ export class AdminGoodsEditComponent implements OnInit {
     });
   }
 
+  /**
+   * submit product to products list or edit product
+   */
   onSubmit() {
     const newGoods = this.goodsForm.value;
     const products = this.productService.getCurrentProduct();
@@ -80,11 +100,12 @@ export class AdminGoodsEditComponent implements OnInit {
     this.productService.storageGoods(products);
   }
 
+  /**
+   * Close dialog window with AdminGoodsEdit component and back to Admin component
+   */
   onCancel() {
     this.dialog.closeAll();
-    this.router.navigate(['/admin'],
-      // {relativeTo: this.route}
-      );
+    this.router.navigate(['/admin']);
   }
 
 }

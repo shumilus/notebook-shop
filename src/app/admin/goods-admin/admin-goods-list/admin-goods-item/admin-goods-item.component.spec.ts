@@ -4,13 +4,6 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 
-import {ToasterService} from "angular2-toaster";
-import {CommonService} from "@shared/services/common.service";
-import {MockOrderService} from "@shared/unit-test-services/mock-order.service";
-import {OrderService} from "@shared/services/order.service";
-import {ProductService} from "@shared/services/product.service";
-import {MockProductService, order} from "@shared/unit-test-services/mock-product.service";
-
 import {AdminGoodsItemComponent} from "./admin-goods-item.component";
 
 describe('AdminGoodsItemComponent', () => {

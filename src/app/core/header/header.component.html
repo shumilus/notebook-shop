@@ -4,7 +4,6 @@
       <div class="navbar-header">
         <a routerLink="/" class="navbar-brand logo logo-color">Blocking</a>
       </div>
-
       <div class="collapse navbar-collapse">
         <div>
           <app-nav-menu></app-nav-menu>
@@ -23,8 +22,12 @@
           <li *ngIf="user" routerLinkActive="active">
             <a class="logo-color" (click)="onLogout()">Logout</a>
           </li>
-          <li routerLinkActive="active">
-            <a routerLink="cart"><i class="fas fa-cart-arrow-down logo-color active"></i></a>
+          <li routerLinkActive="active" class="cartIconBlock">
+            <a routerLink="cart">
+              <i class="fas fa-cart-arrow-down logo-color active"></i>
+              <span class="logo-color"> {{ cartData.sum }} $ | </span>
+              <span class="logo-color"> {{ cartData.total }} pcs. </span>
+            </a>
           </li>
           <li routerLinkActive="active" *ngIf="user?.isAdmin">
             <a class="logo-color admin-panel " routerLink="admin">Admin Panel</a>

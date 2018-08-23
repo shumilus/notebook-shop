@@ -46,31 +46,31 @@ describe('GoodsDetailComponent', () => {
   }));
 
   describe('ngOnInit method', () => {
-    it('Should call getProduct and watch on change id',
+    it('Should call getProductById',
+      async(() => {
+        const spy = spyOn(component, 'getProductById');
+        // const spyProductsSubject = spyOn(component.productService, 'productsSubject');
+        component.ngOnInit();
+        expect(spy).toHaveBeenCalledWith();
+      }));
+  });
+
+  describe('getProductById method', () => {
+    it('Should watch on change id and get product from products list by id',
       async(() => {
         component.id = 1;
         const spy = spyOn(component.productService, 'getProduct').and.returnValue(product);
         // const spyProductsSubject = spyOn(component.productService, 'productsSubject');
         component.ngOnInit();
         expect(spy).toHaveBeenCalledWith(component.id);
-        expect(component.goods).toEqual(product);
-      }));
-  });
-
-  describe('toGoodsList method', () => {
-    it('Should navigate to one step back',
-      async(() => {
-        const spy = spyOn(component, 'toGoodsList');
-        // const spyProductsSubject = spyOn(component.productService, 'productsSubject');
-        component.toGoodsList();
-        expect(spy).toHaveBeenCalledWith();
+        expect(component.product).toEqual(product);
       }));
   });
 
   describe('onAddToCart method', () => {
     it('Should add product to cart',
       async(() => {
-        component.goods = product;
+        component.product = product;
         const spy = spyOn(component.cartService, 'addCart');
         component.onAddToCart();
         expect(spy).toHaveBeenCalledWith(product);

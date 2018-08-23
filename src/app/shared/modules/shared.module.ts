@@ -7,6 +7,7 @@ import {PriceFilterPipe} from '../pipes/price-filter.pipe';
 import {FilterComponent} from '../components/filter/filter.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {MatSelectModule} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSelectModule,
   ],
   exports: [
     CommonModule,

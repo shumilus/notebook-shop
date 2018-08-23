@@ -21,10 +21,11 @@ a{
 }
 
 .admin{
-  width: 100px;
+  width: 130px;
   margin-top: 15px;
   color: rgba(255, 175, 30, 0.9);
   cursor: pointer;
+  text-align: right;
 }
 
 .admin:hover{
@@ -45,5 +46,10 @@ i{
 
 .active>a{
   background-color: rgba(108, 19, 118, 0.9);
+}
+
+.cartIconBlock{
+  width: 150px;
+  text-align: center;
 }
 
