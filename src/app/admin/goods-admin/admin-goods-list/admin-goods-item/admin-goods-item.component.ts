@@ -10,7 +10,7 @@ import {Goods} from '@shared/models/goods.model';
   styleUrls: ['./admin-goods-item.component.scss']
 })
 
-export class AdminGoodsItemComponent  {
+export class AdminGoodsItemComponent {
   @Input() product: Goods;
   @Input() index: number;
 }

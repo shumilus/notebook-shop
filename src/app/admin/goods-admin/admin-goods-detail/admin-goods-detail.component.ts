@@ -43,7 +43,9 @@ export class AdminGoodsDetailComponent implements OnInit {
   getProduct() {
     this.route.params.subscribe(
       (params: Params) => {
+        console.log(this.id);
         this.id = +params['id'];
+        console.log(this.id);
         this.product = this.productService.getProduct(this.id);
       }
     );

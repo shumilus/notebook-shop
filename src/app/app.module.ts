@@ -26,6 +26,7 @@ import {CartComponent} from './cart/cart.component';
 import {GoodsItemComponent} from './goods/goods-item/goods-item.component';
 import {GoodsDetailComponent} from './goods/goods-detail/goods-detail.component';
 import {GoodsListComponent} from './goods/goods-list/goods-list.component';
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {GoodsListComponent} from './goods/goods-list/goods-list.component';
     CartComponent,
     GoodsItemComponent,
     GoodsDetailComponent,
-    GoodsListComponent
+    GoodsListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -43,11 +45,11 @@ import {GoodsListComponent} from './goods/goods-list/goods-list.component';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    AdminModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
     ToasterModule.forRoot(),
-    AdminModule,
     NgxPaginationModule,
     MatIconModule
   ],
@@ -59,7 +61,7 @@ import {GoodsListComponent} from './goods/goods-list/goods-list.component';
     OrderService,
     AuthGuardService,
     CommonService,
-    {provide: APP_BASE_HREF, useValue : '/' }
+    {provide: APP_BASE_HREF, useValue: '/'}
   ],
   bootstrap: [AppComponent]
 })

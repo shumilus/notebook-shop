@@ -11,19 +11,23 @@ import {AdminGoodsEditComponent} from './goods-admin/admin-goods-edit/admin-good
 import {OrderComponent} from './order/order.component';
 
 const adminRoutes: Routes = [
-  { path: 'admin', component: AdminComponent, children: [
-      { path: 'order', component: OrderComponent, canActivate: [AuthGuardService]},
-      { path: '', component: GoodsAdminComponent, children: [
-          { path: '', component: AdminGoodsStartComponent, canActivate: [AuthGuardService]},
-          { path: ':id', component: AdminGoodsDetailComponent, canActivate: [AuthGuardService]},
-          { path: ':id/edit', component: AdminGoodsEditComponent, canActivate: [AuthGuardService]},
-        ]},
-    ]},
+  {
+    path: 'admin', component: AdminComponent, canActivate: [AuthGuardService], children: [
+      {path: 'order', component: OrderComponent},
+      {
+        path: '', component: GoodsAdminComponent, children: [
+          {path: '', component: AdminGoodsStartComponent},
+          {path: ':id', component: AdminGoodsDetailComponent},
+          {path: ':id/edit', component: AdminGoodsEditComponent},
+        ]
+      },
+    ]
+  },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(adminRoutes)],
-  exports: [ RouterModule],
+  imports: [RouterModule.forChild(adminRoutes)],
+  exports: [RouterModule],
   providers: []
 })
 

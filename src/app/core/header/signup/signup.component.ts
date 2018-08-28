@@ -15,7 +15,7 @@ import {CommonService} from '@shared/services/common.service';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  invalidEmail = ['test@test.com'];
+  invalidEmail = ['admin@admin.com'];
 
   /**
    * @summary Signup component constructor.

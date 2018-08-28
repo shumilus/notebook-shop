@@ -29,3 +29,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Running unit tests
 `yarn test`
+
+## Generate documentation
+`yarn run docs`

@@ -31,10 +31,10 @@ export class AuthService {
           this.singinUser(email, password);
         }
       ).catch(
-        (error) => {
-          console.log(error);
-        }
-      );
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   /**
@@ -78,20 +78,26 @@ export class AuthService {
     firebase.auth().signOut();
     this.userSubject.next(null);
     this.router.navigate(['/']);
-    this.toasterService.pop('success', 'You left your account!' );
+    this.toasterService.pop('success', 'You left your account!');
   }
 
   /**
    *  Check if admin
    */
-  checkLogining() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        user.getIdToken().then((token) => {
-          const isAdmin = this.adminEmail === user.email;
-          this.userSubject.next({email: user.email, isAdmin: isAdmin, token: token});
-        });
-      }
+  checkLogining(): Promise<UserData | boolean> {
+    return new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+
+          user.getIdToken().then((token) => {
+            const isAdmin = this.adminEmail === user.email;
+            // this.userSubject.next({email: user.email, isAdmin: isAdmin, token: token});
+            return resolve({email: user.email, isAdmin: isAdmin, token: token});
+          });
+        } else {
+          return resolve(false);
+        }
+      });
     });
   }
 

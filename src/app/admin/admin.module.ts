@@ -14,7 +14,6 @@ import {AdminGoodsStartComponent} from './goods-admin/admin-goods-start/admin-go
 import {OrderComponent} from './order/order.component';
 import {GoodsAdminComponent} from './goods-admin/goods-admin.component';
 
-
 @NgModule({
   declarations: [
     AdminComponent,
