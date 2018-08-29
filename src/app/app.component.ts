@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ToasterConfig, ToasterService} from 'angular2-toaster';
 import {AuthService} from '@shared/services/auth.service';
-import {ProductService} from "@shared/services/product.service";
-import {UserData} from "@shared/models/userData.model";
-import {Router} from "@angular/router";
+import {ProductService} from '@shared/services/product.service';
+import {UserData} from '@shared/models/userData.model';
+import {Router} from '@angular/router';
 
 /**
  * @summary App component
@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
   toasterconfig: ToasterConfig =
     new ToasterConfig({
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
       timeout: 6000,
       animation: 'fade',
       newestOnTop: false,
-      positionClass : 'toast-top-center'
+      positionClass: 'toast-top-center'
     });
 
   /**
@@ -38,7 +39,7 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * @summary Initialize the component and call initializeApp, checkLogining, getProducts methods.
+   * @summary Initialize the component and call initializeApp, getProducts, checkLogin methods.
    */
   ngOnInit() {
     this.authService.initializeApp();
@@ -46,8 +47,11 @@ export class AppComponent implements OnInit {
     this.checkLogin();
   }
 
+  /**
+   * @summary  init checkLogin method for check login
+   */
   checkLogin() {
-    this.authService.checkLogining()
+    this.authService.checkLogin()
       .then((userData: UserData) => {
         if (userData) {
           this.authService.userSubject.next(userData);

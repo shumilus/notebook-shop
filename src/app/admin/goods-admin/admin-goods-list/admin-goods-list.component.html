@@ -1,27 +1,27 @@
 <div class="row container">
-  <div class="col-md-4">
-    <app-filter (filterPage)="filteredPage = $event"
-                (filterCovMat)="filteredCovMat = $event"
-                (filterMinPrice)="filteredMinPrice = $event"
-                (filterMaxPrice)="filteredMaxPrice = $event"></app-filter>
-  </div>
+    <div class="col-md-4">
+        <app-filter (filterPage)="filteredPage = $event"
+                    (filterCovMat)="filteredCovMat = $event"
+                    (filterMinPrice)="filteredMinPrice = $event"
+                    (filterMaxPrice)="filteredMaxPrice = $event"></app-filter>
+    </div>
 
-  <div class="col-md-8">
-    <app-admin-goods-item *ngFor="let goodsItem of goodsList
+    <div class="col-md-8">
+        <app-admin-goods-item *ngFor="let goodsItem of goodsList
                           | pagesFilter:filteredPage:'pages'
                           | pagesFilter:filteredCovMat:'coverMaterial'
                           | priceFilter:filteredMinPrice:filteredMaxPrice:'price'
                           | paginate: { itemsPerPage: 4, currentPage: page}; let i = index"
-                          [product]="goodsItem" [index]="i"></app-admin-goods-item>
-    <div *ngIf = "!goodsList?.length" >
-      <h4>
-        Please add new product!
-      </h4>
+                              [product]="goodsItem" [index]="i"></app-admin-goods-item>
+        <div *ngIf="!goodsList?.length">
+            <h4>
+                Please add new product!
+            </h4>
+        </div>
     </div>
-  </div>
 </div>
-<div class="pagination-template">
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+<div class="pagination-template" *ngIf="goodsList.length > 2">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>
 
 

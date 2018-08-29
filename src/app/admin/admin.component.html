@@ -1,4 +1,12 @@
 <div class="container">
-  <router-outlet></router-outlet>
+    <div class="btn-container">
+        <button type="button"
+                class="button"
+                mat-raised-button
+                mat-primary
+                [routerLink]="['/admin','products']">To products
+        </button>
+    </div>
+    <router-outlet></router-outlet>
 </div>
 

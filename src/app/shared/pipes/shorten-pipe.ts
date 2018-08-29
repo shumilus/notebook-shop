@@ -1,5 +1,8 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
+/**
+ * @summary Shorten pipe
+ */
 @Pipe({
   name: 'shorten'
 })

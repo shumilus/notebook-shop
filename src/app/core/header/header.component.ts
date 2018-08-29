@@ -2,12 +2,11 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
-import {Goods} from "@shared/models/goods.model";
+import {Goods} from '@shared/models/goods.model';
 
 import {AuthService} from '@shared/services/auth.service';
-import {CommonService} from "@shared/services/common.service";
-import {CartService} from "@shared/services/cart.service";
-
+import {CommonService} from '@shared/services/common.service';
+import {CartService} from '@shared/services/cart.service';
 
 import {SignupComponent} from './signup/signup.component';
 import {SigninComponent} from './signin/signin.component';
@@ -25,9 +24,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   cartSubscription: Subscription;
   user: { email: string, isAdmin: boolean };
-  cartData: {sum: number, total: number} = {sum: 0, total: 0};
-  sum: number = 0;
-  total: number = 0;
+  cartData: { sum: number, total: number } = {sum: 0, total: 0};
+  sum = 0;
+  total = 0;
 
   /**
    * @summary Header component constructor.
@@ -45,7 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Initialize the component and call getUser and getCart method
+   * @summary Initialize the component and call getUser and getCart method
    */
   ngOnInit() {
     this.getUser();
@@ -53,7 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * listener for check on admin
+   * @summary Listener for check on admin
    */
   getUser() {
     this.userSubscription = this.authService.userSubject
@@ -65,7 +64,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * listener for update cart list and total and sum value of cart
+   * @summary Listener for update cart list and total and sum value of cart
    */
   getCart() {
     this.cartSubscription = this.cartService.cartChanged
@@ -78,7 +77,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Get total and sum value of cart
+   * @summary Get total and sum value of cart
+   * @param products - products list data
    */
   getCartData(products: Goods[]) {
     this.cartData.sum = 0;
@@ -89,29 +89,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Open dialog window of signup or signin component
+   * @summary Open dialog window of signup or signin component
+   * @param signUp - selected SignUp component
    */
-  openForm(typeWindow: string) {
-    let signStatus;
-    if (typeWindow === 'signup') {
-      signStatus = SignupComponent;
-    } else {
-      signStatus = SigninComponent;
-    }
-    this.dialog.open(signStatus, {
+  openForm(signUp: boolean) {
+    const component: any = signUp ? SignupComponent : SigninComponent;
+    this.dialog.open(component, {
       width: '450px',
     });
   }
 
   /**
-   * Left account
+   * @summary Left account
    */
   onLogout() {
     this.authService.logout();
   }
 
   /**
-   * Cleanup logic
+   * @summary Cleanup logic
    */
   ngOnDestroy() {
     this.commonService.checkSubscription(this.userSubscription);

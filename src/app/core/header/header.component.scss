@@ -1,26 +1,26 @@
-.menu{
+.menu {
   display: flex;
 }
 
-.nav-color{
-  background-color: rgba(118,33,113,0.9);
+.nav-color {
+  background-color: rgba(118, 33, 113, 0.9);
 }
 
-a{
+a {
   cursor: pointer;
 }
 
-.nav>li>a {
+.nav > li > a {
   padding: 15px 15px;
 }
 
-.nav>li>a:hover {
+.nav > li > a:hover {
   height: 50px;
   background-color: rgba(108, 19, 118, 0.9);
   color: rgba(255, 218, 64, 0.9);
 }
 
-.admin{
+.admin {
   width: 130px;
   margin-top: 15px;
   color: rgba(255, 175, 30, 0.9);
@@ -28,7 +28,7 @@ a{
   text-align: right;
 }
 
-.admin:hover{
+.admin:hover {
   color: rgba(255, 218, 64, 0.9);
 }
 
@@ -36,7 +36,7 @@ a{
   color: rgba(255, 175, 30, 0.9);
 }
 
-i{
+i {
   font-size: 17px;
 }
 
@@ -44,11 +44,11 @@ i{
   color: rgba(255, 218, 64, 0.9);
 }
 
-.active>a{
+.active > a {
   background-color: rgba(108, 19, 118, 0.9);
 }
 
-.cartIconBlock{
+.cartIconBlock {
   width: 150px;
   text-align: center;
 }

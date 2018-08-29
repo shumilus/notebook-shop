@@ -1,47 +1,51 @@
 <h3 mat-dialog-title>Sign in</h3>
 <form [formGroup]="signinForm" (ngSubmit)="onSingin()" class="form">
-  <mat-dialog-content >
-    <div class="form-group">
-      <mat-form-field class="input">
-        <input matInput
-               pattern="(?=.*[.]).*$"
-               placeholder="Email"
-               formControlName="email" type="email">
-        <mat-error class="help-block red-stop"
-                   *ngIf="!signinForm.get('email').valid
-                   && signinForm.get('email').value">Please enter a valid email name</mat-error>
-        <br>
-      </mat-form-field>
-      <i class="fas fa-ban red-stop"
-         *ngIf="!signinForm.get('email').valid"></i>
-      <i class="fas fa-calendar-check green-true"
-         *ngIf="signinForm.get('email').valid"></i>
-    </div>
-    <div class="form-group">
-      <mat-form-field class="input">
-        <input matInput
-               placeholder="Password"
-               formControlName="password" type="password">
-        <mat-error class="help-block red-stop"
-                   *ngIf="!signinForm.get('password').valid && signinForm.get('email').value
-          && signinForm.get('email').value">Password should have more then 8 symbol</mat-error>
-      </mat-form-field>
-      <i class="fas fa-ban red-stop"
-         *ngIf="!signinForm.get('password').valid"></i>
-      <i class="fas fa-calendar-check green-true"
-         *ngIf="signinForm.get('password').valid"></i>
-    </div>
-  </mat-dialog-content>
-  <mat-dialog-actions>
-    <button class="mat-raised-button"
-            mat-dialog-close
-            mat-button>Close</button>
-    <button class="mat-raised-button mat-primary"
-            mat-button
-            type="submit"
-            [disabled]="!signinForm.valid"
-            (click)="onCloseForm()">Sing In</button>
-  </mat-dialog-actions>
+    <mat-dialog-content>
+        <div class="form-group">
+            <mat-form-field class="input">
+                <input matInput
+                       pattern="(?=.*[.]).*$"
+                       placeholder="Email"
+                       formControlName="email" type="email">
+                <mat-error class="help-block red-stop"
+                           *ngIf="!signinForm.get('email').valid
+                   && signinForm.get('email').value">Please enter a valid email name
+                </mat-error>
+                <br>
+            </mat-form-field>
+            <i class="fas fa-ban red-stop"
+               *ngIf="!signinForm.get('email').valid"></i>
+            <i class="fas fa-calendar-check green-true"
+               *ngIf="signinForm.get('email').valid"></i>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="input">
+                <input matInput
+                       placeholder="Password"
+                       formControlName="password" type="password">
+                <mat-error class="help-block red-stop"
+                           *ngIf="!signinForm.get('password').valid && signinForm.get('email').value
+          && signinForm.get('email').value">Password should have more then 8 symbol
+                </mat-error>
+            </mat-form-field>
+            <i class="fas fa-ban red-stop"
+               *ngIf="!signinForm.get('password').valid"></i>
+            <i class="fas fa-calendar-check green-true"
+               *ngIf="signinForm.get('password').valid"></i>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button class="mat-raised-button"
+                mat-dialog-close
+                mat-button>Close
+        </button>
+        <button class="mat-raised-button mat-primary"
+                mat-button
+                type="submit"
+                [disabled]="!signinForm.valid"
+                (click)="onCloseForm()">Sing In
+        </button>
+    </mat-dialog-actions>
 </form>
 
 

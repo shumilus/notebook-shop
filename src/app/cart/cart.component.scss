@@ -1,59 +1,59 @@
-.cart_container{
+.cart_container {
   width: 1200px;
   padding: 0 50px;
   margin: 0 auto;
 }
 
-.inlain{
+.inlain {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.delete{
+.delete {
   width: 70px;
   height: 40px;
   text-align: center;
 }
 
-.decor{
+.decor {
   font-size: 15px;
 }
 
-.total{
+.total {
   text-align: right;
   margin-right: 150px;
 }
 
-.to_order{
+.to_order {
   margin-bottom: 20px;
   background-color: rgba(118, 33, 113, 0.9);
 }
 
-.block{
+.block {
   display: flex;
   justify-content: flex-start;
   width: 150px;
   margin-left: 20px;
 }
 
-.order{
+.order {
   margin-top: -20px;
   position: relative;
   padding-left: 50px;
 }
 
-.title{
+.title {
   border-bottom: 2px solid grey;
   margin-bottom: 20px;
   display: flex;
 }
 
-h5{
+h5 {
   width: 150px;
   margin-left: 35px;
 }
 
-.input{
+.input {
   width: 100%;
 }

@@ -1,6 +1,6 @@
-import {Goods} from "@shared/models/goods.model";
-import {of} from "rxjs";
-import {Order} from "@shared/models/order.model";
+import {Goods} from '@shared/models/goods.model';
+import {of} from 'rxjs';
+import {Order} from '@shared/models/order.model';
 
 export const product: Goods = {
   name: 'test',

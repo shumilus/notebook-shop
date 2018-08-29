@@ -3,7 +3,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {ToasterService} from 'angular2-toaster';
-import {ProductService} from "@shared/services/product.service";
+import {ProductService} from '@shared/services/product.service';
 
 /**
  * @summary AdminGoodsEdit component
@@ -31,11 +31,11 @@ export class AdminGoodsEditComponent implements OnInit {
               private productService: ProductService,
               private router: Router,
               private toasterService: ToasterService,
-              private dialog: MatDialog,) {
+              private dialog: MatDialog) {
   }
 
   /**
-   * Initialize the component and call initForm method
+   * @summary Initialize the component and call initForm method
    */
   ngOnInit() {
     this.route.params.subscribe(
@@ -48,7 +48,7 @@ export class AdminGoodsEditComponent implements OnInit {
   }
 
   /**
-   * init form for add or edit product
+   * @summary Init form for add or edit product
    */
   private initForm() {
     let goodsName = '';
@@ -60,7 +60,6 @@ export class AdminGoodsEditComponent implements OnInit {
 
     if (this.editMode) {
       const product = this.productService.getProduct(this.id);
-
       goodsName = product.name;
       goodsImagePath = product.imagePath;
       goodsDescription = product.description;
@@ -84,7 +83,7 @@ export class AdminGoodsEditComponent implements OnInit {
   }
 
   /**
-   * submit product to products list or edit product
+   * @summary Submit product to products list or edit product
    */
   onSubmit() {
     const newGoods = this.goodsForm.value;
@@ -101,11 +100,10 @@ export class AdminGoodsEditComponent implements OnInit {
   }
 
   /**
-   * Close dialog window with AdminGoodsEdit component and back to Admin component
+   * @summary Close dialog window with AdminGoodsEdit component and back to Admin component
    */
   onCancel() {
     this.dialog.closeAll();
-    this.router.navigate(['/admin']);
+    this.router.navigate(['/admin/products']);
   }
-
 }

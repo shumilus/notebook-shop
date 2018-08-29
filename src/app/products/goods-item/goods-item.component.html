@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-12 product-box">
+        <a class="list-group-item clearfix"
+           [routerLink]="[product.id]"
+           routerLinkActive="active">
+      <span class="pull-left">
+        <img [src]="product.imagePath" alt="{{ product.name}}" class="img-responsive" style="max-height: 180px;">
+      </span>
+            <div class="pull-right description-product">
+                <h4 class="list-group-item-heading product-title">The notebook: </h4>
+                <h4 class="list-group-item-heading product-title">"{{ product.name }}"</h4>
+                <h5 class="list-group-item-heading product-title text">Price: {{ product.price}} $</h5>
+            </div>
+
+        </a>
+        <button class="mat-raised-button add-button"
+                mat-button
+                (click)="onAddToCart()">Add to cart
+        </button>
+    </div>
+</div>

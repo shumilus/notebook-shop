@@ -1,31 +1,30 @@
-import {async, ComponentFixture, fakeAsync, TestBed} from "@angular/core/testing";
-import {AppModule} from "../../../app.module";
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
-import {Router} from "@angular/router";
-import {AppRoutingModule} from "../../../app-routing.module";
-import {AdminRoutingModule} from "../../admin-routing.module";
+import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
+import {AppModule} from '../../../app.module';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
+import {AppRoutingModule} from '../../../app-routing.module';
+import {AdminRoutingModule} from '../../admin-routing.module';
 
-import {ToasterService} from "angular2-toaster";
-import {CommonService} from "@shared/services/common.service";
-import {ProductService} from "@shared/services/product.service";
-import {MockProductService, product} from "@shared/unit-test-services/mock-product.service";
+import {ToasterService} from 'angular2-toaster';
+import {CommonService} from '@shared/services/common.service';
+import {ProductService} from '@shared/services/product.service';
+import {MockProductService, product} from '@shared/unit-test-services/mock-product.service';
 
-import {AdminComponent} from "../../admin.component";
-import {AdminGoodsEditComponent} from "./admin-goods-edit.component";
+import {AdminComponent} from '../../admin.component';
+import {AdminGoodsEditComponent} from './admin-goods-edit.component';
 
 describe('AdminGoodsEditComponent', () => {
   let component: any;
   let fixture: ComponentFixture<AdminGoodsEditComponent>;
-  // let location: Location;
   let router: Router;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [],
       imports: [
         RouterTestingModule.withRoutes([
-          { path: 'admin', component: AdminComponent}
+          {path: 'admin', component: AdminComponent}
         ]),
         HttpClientModule,
         ReactiveFormsModule,
@@ -38,9 +37,7 @@ describe('AdminGoodsEditComponent', () => {
         ToasterService,
         CommonService
       ],
-      schemas: [
-        // CUSTOM_ELEMENTS_SCHEMA
-      ]
+      schemas: []
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AdminGoodsEditComponent);
       component = fixture.debugElement.componentInstance;
@@ -65,7 +62,7 @@ describe('AdminGoodsEditComponent', () => {
   describe('initForm method', () => {
     it(' init form',
       async(() => {
-        const product = {
+        const productData = {
           name: '',
           imagePath: '',
           description: '',
@@ -74,7 +71,7 @@ describe('AdminGoodsEditComponent', () => {
           coverMaterial: ''
         };
         component.initForm();
-        expect(component.goodsForm.value).toEqual(product);
+        expect(component.goodsForm.value).toEqual(productData);
       }));
   });
 
@@ -82,7 +79,7 @@ describe('AdminGoodsEditComponent', () => {
     it(' init form if editMode equal true',
       async(() => {
         expect(component.goodsForm.valid).toBeFalsy();
-        const product = {
+        const productData = {
           name: 'test',
           imagePath: 'test',
           description: 'test',
@@ -91,8 +88,8 @@ describe('AdminGoodsEditComponent', () => {
           coverMaterial: 'test'
         };
         component.initForm();
-        component.goodsForm.setValue(product);
-        expect(component.goodsForm.value).toEqual(product);
+        component.goodsForm.setValue(productData);
+        expect(component.goodsForm.value).toEqual(productData);
         expect(component.goodsForm.valid).toBeTruthy();
       }));
   });
@@ -103,7 +100,7 @@ describe('AdminGoodsEditComponent', () => {
   );
 
   it('name field validity', () => {
-    let name = component.goodsForm.controls['name'];
+    const name = component.goodsForm.controls['name'];
     expect(name.valid).toBeFalsy();
   });
 
@@ -129,7 +126,7 @@ describe('AdminGoodsEditComponent', () => {
         const spyNav = spyOn(component.router, 'navigate');
         component.onCancel();
         expect(spy).toHaveBeenCalledWith();
-        expect(spyNav).toHaveBeenCalledWith(['/admin']);
+        expect(spyNav).toHaveBeenCalledWith(['/admin/products']);
       }));
   });
 });

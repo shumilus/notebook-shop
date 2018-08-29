@@ -21,7 +21,9 @@ export class AuthService {
   }
 
   /**
-   * create new user with email and password data
+   * @summary Create new user with email and password data
+   * @param email - email data
+   * @param password - password data
    */
   singupUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -38,14 +40,14 @@ export class AuthService {
   }
 
   /**
-   * get user token
+   * @summary get user token
    */
   getToken() {
     return this.userSubject.value;
   }
 
   /**
-   * login user
+   * @summary login user
    */
   singinUser(email: string, password: string) {
     firebase.auth().signInWithEmailAndPassword(email, password)
@@ -72,7 +74,7 @@ export class AuthService {
   }
 
   /**
-   * logout user
+   * @summary Logout user
    */
   logout() {
     firebase.auth().signOut();
@@ -82,16 +84,14 @@ export class AuthService {
   }
 
   /**
-   *  Check if admin
+   *  @summary Check login
    */
-  checkLogining(): Promise<UserData | boolean> {
+  checkLogin(): Promise<UserData | boolean> {
     return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-
           user.getIdToken().then((token) => {
             const isAdmin = this.adminEmail === user.email;
-            // this.userSubject.next({email: user.email, isAdmin: isAdmin, token: token});
             return resolve({email: user.email, isAdmin: isAdmin, token: token});
           });
         } else {
@@ -102,7 +102,7 @@ export class AuthService {
   }
 
   /**
-   *  Check user is already login
+   *  @summary Check user is already login
    */
   isAuthenticated() {
     return this.userSubject.value.token != null;

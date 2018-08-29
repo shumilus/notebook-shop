@@ -1,17 +1,15 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {AppModule} from "../../../app.module";
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {AppModule} from '../../../app.module';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
-import {ToasterService} from "angular2-toaster";
-import {CommonService} from "@shared/services/common.service";
+import {ToasterService} from 'angular2-toaster';
+import {CommonService} from '@shared/services/common.service';
 
-import {AuthService} from "@shared/services/auth.service";
-import {MockAuthService} from "@shared/unit-test-services/mock-auth.service";
-import {SignupComponent} from "./signup.component";
-
-
+import {AuthService} from '@shared/services/auth.service';
+import {MockAuthService} from '@shared/unit-test-services/mock-auth.service';
+import {SignupComponent} from './signup.component';
 
 describe('SignupComponent', () => {
   let component: any;
@@ -30,9 +28,7 @@ describe('SignupComponent', () => {
         ToasterService,
         CommonService
       ],
-      schemas: [
-        // CUSTOM_ELEMENTS_SCHEMA
-      ]
+      schemas: []
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(SignupComponent);
       component = fixture.debugElement.componentInstance;
@@ -70,29 +66,14 @@ describe('SignupComponent', () => {
   );
 
   it('email field validity', () => {
-    let email = component.signupForm.controls['email'];
+    const email = component.signupForm.controls['email'];
     expect(email.valid).toBeFalsy();
   });
-
-  // it('submitting a form emits a user', () => {
-  //   expect(component.signupForm.valid).toBeFalsy();
-  //   component.signupForm.controls['email'].setValue("test@test.com");
-  //   component.signupForm.controls['password'].setValue("12345678");
-  //   component.signupForm.controls['confirmedPassword'].setValue("12345678");
-  //   expect(component.signupForm.valid).toBeTruthy();
-  // });
-
-  // describe('confirmPassword method', () => {
-  //   it(' confirm password',
-  //     async(() => {
-  //
-  //     }));
-  // });
 
   describe('onSingup method', () => {
     it('Should call singupUser method with params email and password ',
       async(() => {
-        const userData = { email: 'test', password: 'test'};
+        const userData = {email: 'test', password: 'test'};
         component.signupForm.value = userData;
         const spy = spyOn(component.authService, 'singupUser');
         component.onSingup();

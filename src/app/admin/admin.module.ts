@@ -23,7 +23,7 @@ import {GoodsAdminComponent} from './goods-admin/goods-admin.component';
     AdminGoodsItemComponent,
     AdminGoodsStartComponent,
     OrderComponent,
-    GoodsAdminComponent,
+    GoodsAdminComponent
   ],
   imports: [
     CommonModule,

@@ -1,20 +1,21 @@
-.logo{
+.logo {
   color: purple;
 }
+
 a {
   cursor: pointer;
 }
 
-.navbar-nav>li>a {
+.navbar-nav > li > a {
   color: rgba(255, 175, 30, 0.9);
 }
 
-.navbar-nav>li>a:hover {
+.navbar-nav > li > a:hover {
   color: rgba(255, 218, 64, 0.9);
   background-color: rgba(108, 19, 118, 0.9);
 }
 
-.navbar-nav>.active>a {
+.navbar-nav > .active > a {
   background-color: rgba(108, 19, 118, 0.9);
 }
 

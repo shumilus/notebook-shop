@@ -1,14 +1,14 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {AppModule} from '../../../../app.module';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AppModule} from '../app.module';
 
-import {AdminGoodsItemComponent} from './admin-goods-item.component';
+import {GoodsComponent} from './goods.component';
 
-describe('AdminGoodsItemComponent', () => {
+describe('GoodsComponent', () => {
   let component: any;
-  let fixture: ComponentFixture<AdminGoodsItemComponent>;
+  let fixture: ComponentFixture<GoodsComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [],
@@ -21,12 +21,13 @@ describe('AdminGoodsItemComponent', () => {
       providers: [],
       schemas: []
     }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(AdminGoodsItemComponent);
+      fixture = TestBed.createComponent(GoodsComponent);
       component = fixture.debugElement.componentInstance;
     });
+
   }));
 
-  it('Should create AdminGoodsItemComponent', async(() => {
+  it('Should create GoodsComponent', async(() => {
     expect(component).toBeTruthy();
   }));
 

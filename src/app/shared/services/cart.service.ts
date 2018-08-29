@@ -16,7 +16,8 @@ export class CartService {
   }
 
   /**
-   * Add product to cart list
+   * @summary Add product to cart list
+   * @param product - product data
    */
   addCart(product: Goods) {
     this.cartList.push(product);
@@ -26,14 +27,15 @@ export class CartService {
   }
 
   /**
-   * Get copy of cart list
+   * @summary Get copy of cart list
    */
   getGoods() {
     return this.cartList.slice();
   }
 
   /**
-   * Delete product from cart list
+   * @summary Delete product from cart list
+   * @param index - product index
    */
   deleteProduct(index: number) {
     this.cartList.splice(index, 1);
@@ -42,17 +44,17 @@ export class CartService {
   }
 
   /**
-   * Save cart list data to local storage
+   * @summary Save cart list data to local storage
    */
-  setCart () {
+  setCart() {
     const value = JSON.stringify(this.cartList);
     localStorage.setItem('cartList', value);
   }
 
   /**
-   * Get cart list data from local storage
+   * @summary Get cart list data from local storage
    */
-  getCart () {
+  getCart() {
     const data = JSON.parse(localStorage.getItem('cartList'));
     if (data) {
       this.cartList = data;
@@ -62,7 +64,7 @@ export class CartService {
   }
 
   /**
-   * Cleanup cart list
+   * @summary Cleanup cart list
    */
   clearCart() {
     this.cartList = [];

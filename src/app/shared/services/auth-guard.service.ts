@@ -1,8 +1,8 @@
 import {CanActivate, Router,} from '@angular/router';
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
-import {Observable} from "rxjs/internal/Observable";
-import {UserData} from "@shared/models/userData.model";
+import {Observable} from 'rxjs/internal/Observable';
+import {UserData} from '@shared/models/userData.model';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
@@ -16,17 +16,17 @@ export class AuthGuardService implements CanActivate {
   }
 
   /**
-   * Check allow access for admin
+   * @summary Check allow access for admin
    */
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.getToken()) {
       return true;
     }
-    return this.authService.checkLogining()
+    return this.authService.checkLogin()
       .then((userData: UserData) => {
-        if (userData && userData.isAdmin == true) {
+        if (userData && userData.isAdmin === true) {
           this.authService.userSubject.next(userData);
-          return true
+          return true;
         }
         this.router.navigate(['./']);
         return false;

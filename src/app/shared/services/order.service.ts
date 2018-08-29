@@ -4,7 +4,7 @@ import {AuthService} from './auth.service';
 import {CartService} from './cart.service';
 import {ProductService} from './product.service';
 import {Order} from '../models/order.model';
-import {ToasterService} from "angular2-toaster";
+import {ToasterService} from 'angular2-toaster';
 
 @Injectable()
 export class OrderService {
@@ -24,22 +24,23 @@ export class OrderService {
   }
 
   /**
-   * Save order to firebase
+   * @summary Save order to firebase
+   * @param isAdd - flag for add or delete
    */
-  storageOrders(flag: string) {
+  storageOrders(isAdd: boolean) {
     const token = this.authService.getToken().token;
     this.http.put(`https://myfirstangular6project.firebaseio.com/order.json?auth=${token}`,
       this.productService.getOrders()
     ).subscribe(
       (response: any) => {
-        if(flag === 'delete'){
+        if (isAdd === false) {
           this.toasterService.pop('success', 'You delete order!');
         }
       });
   }
 
   /**
-   * Get order from firebase
+   * @summary Get order from firebase
    */
   getOrders() {
     this.http.get('https://myfirstangular6project.firebaseio.com/order.json')

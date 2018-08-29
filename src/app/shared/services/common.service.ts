@@ -1,14 +1,14 @@
 import {FormControl} from '@angular/forms';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
 export class CommonService {
   /**
-   * Check confirm password
+   * @summary Check confirm password
    */
-  confirmPassword (otherControlName: string) {
+  confirmPassword(otherControlName: string) {
     let thisControl: FormControl;
     let otherControl: FormControl;
-    return function matchOtherValidate (control: FormControl) {
+    return function matchOtherValidate(control: FormControl) {
       if (!control.parent) {
         return null;
       }
@@ -35,11 +35,12 @@ export class CommonService {
       return null;
     };
   }
+
   /**
-   * cleanup logic
+   * @summary Cleanup logic
    */
-  checkSubscription( subscription: Subscription) {
-    if(subscription) {
+  checkSubscription(subscription: Subscription) {
+    if (subscription) {
       subscription.unsubscribe();
     }
   }

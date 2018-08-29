@@ -1,5 +1,23 @@
-.container{
+.container {
   width: 1260px;
-  //width: 100%;
   margin: 0 auto;
+}
+
+.btn {
+  outline: none;
+  color: white;
+  width: 150px;
+  margin: 0 30px 90px 30px;
+  background-color: rgba(118, 33, 113, 0.9);
+}
+
+.button {
+  background-color: rgba(118, 33, 113, 0.9);
+  color: white;
+  width: 150px;
+  margin: 0 10px;
+}
+
+.btn-container {
+  text-align: center;
 }

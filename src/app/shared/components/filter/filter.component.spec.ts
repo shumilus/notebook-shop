@@ -1,13 +1,13 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {AppModule} from "../../../app.module";
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
-import {order, product} from "@shared/unit-test-services/mock-product.service";
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {AppModule} from '../../../app.module';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
-import {ToasterService} from "angular2-toaster";
-import {CommonService} from "@shared/services/common.service";
-import {FilterComponent} from "@shared/components/filter/filter.component";
+import {ToasterService} from 'angular2-toaster';
+import {CommonService} from '@shared/services/common.service';
+
+import {FilterComponent} from '@shared/components/filter/filter.component';
 
 describe('FilterComponent', () => {
   let component: any;
@@ -25,9 +25,7 @@ describe('FilterComponent', () => {
         ToasterService,
         CommonService
       ],
-      schemas: [
-        // CUSTOM_ELEMENTS_SCHEMA
-      ]
+      schemas: []
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(FilterComponent);
       component = fixture.debugElement.componentInstance;

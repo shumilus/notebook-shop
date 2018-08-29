@@ -29,17 +29,18 @@ export class SignupComponent implements OnInit {
               private toasterService: ToasterService,
               private dialog: MatDialog,
               private commonService: CommonService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder) {
+  }
 
   /**
-   * Initialize the component and call initForm method
+   * @summary Initialize the component and call initForm method
    */
   ngOnInit() {
     this.initForm();
   }
 
   /**
-   * init form
+   * @summary Init form
    */
   initForm() {
     this.signupForm = this.formBuilder.group({
@@ -60,7 +61,7 @@ export class SignupComponent implements OnInit {
   }
 
   /**
-   * register new user
+   * @summary Register new user
    */
   onSingup() {
     const email = this.signupForm.value.email;
@@ -69,7 +70,8 @@ export class SignupComponent implements OnInit {
   }
 
   /**
-   * Check valid email name
+   * @summary Check valid email name
+   * @param control - Form control
    */
   forValidEmail(control: FormControl): { [key: string]: boolean } {
     for (const email of this.invalidEmail) {
@@ -81,7 +83,7 @@ export class SignupComponent implements OnInit {
   }
 
   /**
-   * Close dialog window
+   * @summary Close dialog window
    */
   onCloseForm() {
     this.dialog.closeAll();

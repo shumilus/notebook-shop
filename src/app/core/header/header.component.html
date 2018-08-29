@@ -1,39 +1,39 @@
 <div>
-  <nav class="navbar navbar-default nav-color">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a routerLink="/" class="navbar-brand logo logo-color">Blocking</a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <div>
-          <app-nav-menu></app-nav-menu>
+    <nav class="navbar navbar-default nav-color">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a routerLink="/" class="navbar-brand logo logo-color">Blocking</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <div>
+                    <app-nav-menu></app-nav-menu>
+                </div>
+                <ul class="nav navbar-right menu">
+                    <ng-template [ngIf]="!user">
+                        <li><a class="logo-color" (click)="openForm(true)">Register</a></li>
+                        <li><a class="logo-color" (click)="openForm(false)">Login</a></li>
+                    </ng-template>
+                    <li class="admin">
+                        <span *ngIf="user?.isAdmin">Admin</span>
+                    </li>
+                    <li class="admin">
+                        <span>{{ user?.email }}</span>
+                    </li>
+                    <li *ngIf="user" routerLinkActive="active">
+                        <a class="logo-color" (click)="onLogout()">Logout</a>
+                    </li>
+                    <li routerLinkActive="active" class="cartIconBlock">
+                        <a routerLink="cart">
+                            <i class="fas fa-cart-arrow-down logo-color active"></i>
+                            <span class="logo-color"> {{ cartData.sum }} $ | </span>
+                            <span class="logo-color"> {{ cartData.total }} pcs. </span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active" *ngIf="user?.isAdmin">
+                        <a class="logo-color admin-panel " routerLink="admin">Admin Panel</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class="nav navbar-right menu">
-          <ng-template [ngIf]="!user">
-            <li><a class="logo-color" (click)="openForm('signup')" >Register</a></li>
-            <li><a class="logo-color" (click)="openForm('signin')">Login</a></li>
-          </ng-template>
-          <li class="admin">
-            <span *ngIf="user?.isAdmin">Admin</span>
-          </li>
-          <li class="admin">
-            <span>{{ user?.email }}</span>
-          </li>
-          <li *ngIf="user" routerLinkActive="active">
-            <a class="logo-color" (click)="onLogout()">Logout</a>
-          </li>
-          <li routerLinkActive="active" class="cartIconBlock">
-            <a routerLink="cart">
-              <i class="fas fa-cart-arrow-down logo-color active"></i>
-              <span class="logo-color"> {{ cartData.sum }} $ | </span>
-              <span class="logo-color"> {{ cartData.total }} pcs. </span>
-            </a>
-          </li>
-          <li routerLinkActive="active" *ngIf="user?.isAdmin">
-            <a class="logo-color admin-panel " routerLink="admin">Admin Panel</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    </nav>
 </div>

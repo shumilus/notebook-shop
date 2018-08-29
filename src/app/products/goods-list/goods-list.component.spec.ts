@@ -1,15 +1,15 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {AppModule} from "../../app.module";
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {AppModule} from '../../app.module';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
-import {ProductService} from "@shared/services/product.service";
-import {MockProductService, product} from "@shared/unit-test-services/mock-product.service";
-import {ToasterService} from "angular2-toaster";
-import {CommonService} from "@shared/services/common.service";
+import {ProductService} from '@shared/services/product.service';
+import {MockProductService, product} from '@shared/unit-test-services/mock-product.service';
+import {ToasterService} from 'angular2-toaster';
+import {CommonService} from '@shared/services/common.service';
 
-import {GoodsListComponent} from "./goods-list.component";
+import {GoodsListComponent} from './goods-list.component';
 
 describe('GoodsListComponent', () => {
   let component: any;

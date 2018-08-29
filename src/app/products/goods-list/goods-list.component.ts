@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Goods} from '@shared/models/goods.model';
 import {ProductService} from '@shared/services/product.service';
-import {CommonService} from "@shared/services/common.service";
+import {CommonService} from '@shared/services/common.service';
 
 @Component({
   selector: 'app-goods-list',

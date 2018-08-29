@@ -1,9 +1,9 @@
-.product-box{
+.product-box {
   max-width: 240px;
   margin: 0px 15px;
 }
 
-.product-title{
+.product-title {
   margin-top: 10px;
 }
 
@@ -12,17 +12,18 @@
   background-color: rgba(255, 175, 30, 0.9);;
 }
 
-.discription-product{
+.description-product {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 5px;
 }
 
-.text{
+.text {
   width: 100%;
   text-align: center;
 }
+
 .product-title[_ngcontent-c7] {
   margin-top: 3px;
 }

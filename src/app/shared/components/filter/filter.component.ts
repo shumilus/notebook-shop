@@ -38,7 +38,6 @@ export class FilterComponent {
 
   /**
    * @summary Send params of min price for price filter.
-   * @param params - min price.
    */
   minPriceFilter() {
     this.filterMinPrice.emit(this.minPrice);
@@ -46,7 +45,6 @@ export class FilterComponent {
 
   /**
    * @summary Send params of max price for price filter.
-   * @param params - max price.
    */
   maxPriceFilter() {
     this.filterMaxPrice.emit(this.maxPrice);

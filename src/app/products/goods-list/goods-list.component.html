@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-9">
+        <div class="products-container">
+            <app-goods-item *ngFor="let goodsItem of goodsList
+                    | pagesFilter:filteredPage:'pages'
+                    | pagesFilter:filteredCovMat:'coverMaterial'
+                    | priceFilter:filteredMinPrice:filteredMaxPrice:'price'
+                    | paginate: { itemsPerPage: 8, currentPage: page }; let i = index"
+                            [product]="goodsItem"
+                            [index]="i"></app-goods-item>
+            <div *ngIf="!goodsList?.length">
+                <h4>There are no goods yet!</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <app-filter class="filter-box"
+                    (filterPage)="filteredPage = $event"
+                    (filterCovMat)="filteredCovMat = $event"
+                    (filterMinPrice)="filteredMinPrice = $event"
+                    (filterMaxPrice)="filteredMaxPrice = $event"></app-filter>
+    </div>
+    <div class="pagination" *ngIf="goodsList.length > 8">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+</div>
+
+
+

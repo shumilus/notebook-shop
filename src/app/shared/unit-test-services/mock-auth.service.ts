@@ -1,6 +1,4 @@
-import {of} from "rxjs";
-import {UserData} from "@shared/models/userData.model";
-import * as firebase from "firebase";
+import {of} from 'rxjs';
 
 export const user = {
   email: 'test',
@@ -8,7 +6,7 @@ export const user = {
 };
 
 export class MockAuthService {
-  userSubject = of({email: user.email, isAdmin: user.isAdmin, token: 'test'});
+  userSubject = of(user);
 
   logout() {
     of(null);
@@ -23,14 +21,7 @@ export class MockAuthService {
   initializeApp() {
   }
 
-  // checkLogining() {
-  //   of({email: 'test@test.com', isAdmin: true, token: 'test'});
-  // }
-
-  checkLogining(): Promise<UserData | boolean> {
-    return new Promise((resolve, reject) => {
-      return resolve({email: user.email, isAdmin: user.isAdmin, token: 'test'});
-    });
+  checkLogining() {
+    of({email: 'test@test.com', isAdmin: true, token: 'test'});
   }
-
 }

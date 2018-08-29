@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialog} from '@angular/material';
 import {AuthService} from '@shared/services/auth.service';
 import {ToasterService} from 'angular2-toaster';
-import {MatDialog} from '@angular/material';
 
 /**
  * @summary Signin component
@@ -28,14 +28,14 @@ export class SigninComponent implements OnInit {
   }
 
   /**
-   * Initialize the component and call initForm method
+   * @summary Initialize the component and call initForm method
    */
   ngOnInit() {
     this.initForm();
   }
 
   /**
-   * init form
+   * @summary Init form
    */
   private initForm() {
     this.signinForm = new FormGroup({
@@ -45,7 +45,7 @@ export class SigninComponent implements OnInit {
   }
 
   /**
-   * login user
+   * @summary Login user
    */
   onSingin() {
     const email = this.signinForm.value.email;
@@ -54,7 +54,7 @@ export class SigninComponent implements OnInit {
   }
 
   /**
-   * Close dialog window
+   * @summary Close dialog window
    */
   onCloseForm() {
     this.dialog.closeAll();

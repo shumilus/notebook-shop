@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 /**
  * @summary Footer component
@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 
-export class FooterComponent  {
+export class FooterComponent {
 }

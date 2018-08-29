@@ -1,18 +1,18 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {AppModule} from "../app.module";
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
-import {order, product} from "@shared/unit-test-services/mock-product.service";
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {AppModule} from '../app.module';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {order, product} from '@shared/unit-test-services/mock-product.service';
 
-import {ToasterService} from "angular2-toaster";
-import {CommonService} from "@shared/services/common.service";
-import {AuthService} from "@shared/services/auth.service";
-import {MockAuthService} from "@shared/unit-test-services/mock-auth.service";
-import {OrderService} from "@shared/services/order.service";
-import {MockOrderService} from "@shared/unit-test-services/mock-order.service";
+import {ToasterService} from 'angular2-toaster';
+import {CommonService} from '@shared/services/common.service';
+import {AuthService} from '@shared/services/auth.service';
+import {MockAuthService} from '@shared/unit-test-services/mock-auth.service';
+import {OrderService} from '@shared/services/order.service';
+import {MockOrderService} from '@shared/unit-test-services/mock-order.service';
 
-import {CartComponent} from "./cart.component";
+import {CartComponent} from './cart.component';
 
 describe('CartComponent', () => {
   let component: any;
@@ -32,9 +32,7 @@ describe('CartComponent', () => {
         ToasterService,
         CommonService
       ],
-      schemas: [
-        // CUSTOM_ELEMENTS_SCHEMA
-      ]
+      schemas: []
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(CartComponent);
       component = fixture.debugElement.componentInstance;
@@ -74,15 +72,6 @@ describe('CartComponent', () => {
     });
   });
 
-  // describe('getGoods method', () => {
-  //   it('Should check if  client is login, take email for cart form', () => {
-  //     component.cartList = [product];
-  //     component.getGoods();
-  //     expect(component.cartList).toEqual([product]);
-  //
-  //   });
-  // });
-
   describe('getCartData method', () => {
     it('Should calculate sum of products and quantity', () => {
       component.cartList = [product];
@@ -111,7 +100,7 @@ describe('CartComponent', () => {
     it('Should init onAddOrder, clearCart, reset, saveOrder method and do sum equal 0',
       async(() => {
         component.sum = 0;
-        const add= 'add';
+        const add = true;
         const spy = spyOn(component, 'onAddOrder');
         const spyClearCart = spyOn(component.cartService, 'clearCart');
         const spyReset = spyOn(component.buyerForm, 'reset');
@@ -126,7 +115,7 @@ describe('CartComponent', () => {
   });
 
   describe('onAddOrder method', () => {
-    it('order should equal form value and goods in order should equal cartList',
+    it('order should equal form value and products in order should equal cartList',
       async(() => {
         component.$order = order;
         const spy = spyOn(component.productService, 'addOrder');
@@ -153,16 +142,16 @@ describe('CartComponent', () => {
   );
 
   it('email field validity', () => {
-    let email = component.buyerForm.controls['email'];
+    const email = component.buyerForm.controls['email'];
     expect(email.valid).toBeFalsy();
   });
 
   it('submitting a form emits a user', () => {
     expect(component.buyerForm.valid).toBeFalsy();
-    component.buyerForm.controls['name'].setValue("test");
-    component.buyerForm.controls['surname'].setValue("test");
-    component.buyerForm.controls['phone'].setValue("55555555");
-    component.buyerForm.controls['email'].setValue("test@test.com");
+    component.buyerForm.controls['name'].setValue('test');
+    component.buyerForm.controls['surname'].setValue('test');
+    component.buyerForm.controls['phone'].setValue('55555555');
+    component.buyerForm.controls['email'].setValue('test@test.com');
     expect(component.buyerForm.valid).toBeTruthy();
   });
 

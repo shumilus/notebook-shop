@@ -68,7 +68,7 @@ describe('OrderComponent', () => {
   describe('onDelete method', () => {
     it('delete order from order list and save new orderList in local storage',
       async(() => {
-        const flag = 'delete';
+        const flag = false;
         const index = 1;
         const spy = spyOn(component.productService, 'deleteOrder');
         const spySaveOrder = spyOn(component.orderService, 'storageOrders');

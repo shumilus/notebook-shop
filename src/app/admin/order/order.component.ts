@@ -3,7 +3,7 @@ import {Order} from '@shared/models/order.model';
 import {ProductService} from '@shared/services/product.service';
 import {Subscription} from 'rxjs';
 import {OrderService} from '@shared/services/order.service';
-import {CommonService} from "@shared/services/common.service";
+import {CommonService} from '@shared/services/common.service';
 
 /**
  * @summary Order component
@@ -30,14 +30,14 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Initialize the component and call getOrders method
+   * @summary Initialize the component and call getOrders method
    */
   ngOnInit() {
     this.getOrders();
   }
 
   /**
-   * Get orders and listener for update order list
+   * @summary Get order and listener for update order list
    */
   getOrders() {
     this.orderService.getOrders();
@@ -51,15 +51,16 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Delete order from order list
+   * @summary Delete order from order list
+   * @param index - order index
    */
   onDelete(index: number) {
     this.productService.deleteOrder(index);
-    this.orderService.storageOrders('delete');
+    this.orderService.storageOrders(false);
   }
 
   /**
-   * Cleanup logic
+   * @summary Cleanup logic
    */
   ngOnDestroy() {
     this.commonService.checkSubscription(this.orderChangedSubscription);

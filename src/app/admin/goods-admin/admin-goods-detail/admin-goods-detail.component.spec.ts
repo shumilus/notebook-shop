@@ -1,19 +1,19 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {AppModule} from "../../../app.module";
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {AppModule} from '../../../app.module';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
 
-import {ToasterService} from "angular2-toaster";
-import {CommonService} from "@shared/services/common.service";
-import {MockOrderService} from "@shared/unit-test-services/mock-order.service";
-import {OrderService} from "@shared/services/order.service";
-import {ProductService} from "@shared/services/product.service";
-import {MockProductService, product} from "@shared/unit-test-services/mock-product.service";
+import {ToasterService} from 'angular2-toaster';
+import {CommonService} from '@shared/services/common.service';
+import {MockOrderService} from '@shared/unit-test-services/mock-order.service';
+import {OrderService} from '@shared/services/order.service';
+import {ProductService} from '@shared/services/product.service';
+import {MockProductService, product} from '@shared/unit-test-services/mock-product.service';
 
-import {AdminGoodsDetailComponent} from "./admin-goods-detail.component";
-import {Router} from "@angular/router";
-import {AdminComponent} from "../../admin.component";
+import {AdminGoodsDetailComponent} from './admin-goods-detail.component';
+import {AdminComponent} from '../../admin.component';
 
 describe('AdminGoodsDetailComponent', () => {
   let component: any;
@@ -24,7 +24,7 @@ describe('AdminGoodsDetailComponent', () => {
       declarations: [],
       imports: [
         RouterTestingModule.withRoutes([
-          { path: 'admin', component: AdminComponent}
+          {path: 'admin', component: AdminComponent}
         ]),
         HttpClientModule,
         ReactiveFormsModule,
@@ -83,7 +83,7 @@ describe('AdminGoodsDetailComponent', () => {
         component.onDeleteGoods();
         expect(spyStorageGoods).toHaveBeenCalledWith(productCur, flag);
         expect(productCur.length).toBe(1);
-        expect(spyNav).toHaveBeenCalledWith(['/admin']);
+        expect(spyNav).toHaveBeenCalledWith(['/admin/products']);
       }));
   });
 

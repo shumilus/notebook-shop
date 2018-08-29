@@ -1,39 +1,42 @@
+<h3>Order list</h3>
 <div class="row title">
-  <h4 class="name-title">Product</h4>
-  <h4>Name</h4>
-  <h4 class="price-title">Price</h4>
-  <h4 class="client-inf">Client information</h4>
+    <h4 class="name-title">Product</h4>
+    <h4>Name</h4>
+    <h4 class="price-title">Price</h4>
+    <h4 class="client-inf">Client information</h4>
 </div>
 <br>
 <div class="row">
-  <div *ngFor="let order of orderList; let i = index">
-    <a class="list-group-item clearfix"
-       routerLinkActive="active">
-      <div class="col-md-8">
-        <div *ngFor="let goodsItem of order.goods">
-          <div class="product-block">
-            <img [src]="goodsItem.imagePath" alt="{{ goodsItem.name}}" class="img-responsive" style="max-height: 70px;">
-            <h4 class="list-group-item-heading goods-name">The notebook "{{ goodsItem.name }}"</h4>
-            <p> Price: {{ goodsItem.price }} $</p>
-          </div>
-          <hr>
-        </div>
-      </div>
+    <div *ngFor="let order of orderList; let i = index">
+        <a class="list-group-item clearfix"
+           routerLinkActive="active">
+            <div class="col-md-8">
+                <div *ngFor="let goodsItem of order.goods">
+                    <div class="product-block">
+                        <img [src]="goodsItem.imagePath" alt="{{ goodsItem.name}}" class="img-responsive"
+                             style="max-height: 70px;">
+                        <h4 class="list-group-item-heading goods-name">The notebook "{{ goodsItem.name }}"</h4>
+                        <p> Price: {{ goodsItem.price }} $</p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
 
-      <div class="col-md-4 user_contact">
-        <h5>Name: {{ order.name }}</h5>
-        <h5>Surname: {{ order.surname }}</h5>
-        <h5>Phone: {{ order.phone }}</h5>
-        <h5>Email: {{ order.email }}</h5>
-        <button class="mat-primary delete-btn"
-                mat-raised-button
-                (click)="onDelete(i)">Delete</button>
-      </div>
+            <div class="col-md-4 user_contact">
+                <h5>Name: {{ order.name }}</h5>
+                <h5>Surname: {{ order.surname }}</h5>
+                <h5>Phone: {{ order.phone }}</h5>
+                <h5>Email: {{ order.email }}</h5>
+                <button class="mat-primary delete-btn"
+                        mat-raised-button
+                        (click)="onDelete(i)">Delete
+                </button>
+            </div>
 
-    </a>
-    <br>
-  </div>
-  <div *ngIf="orderList.length === 0">
-    <h3>You have not orders yet!</h3>
-  </div>
+        </a>
+        <br>
+    </div>
+    <div *ngIf="orderList.length === 0">
+        <h3>You have not orders yet!</h3>
+    </div>
 </div>

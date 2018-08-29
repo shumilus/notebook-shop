@@ -2,14 +2,14 @@
 <a class="list-group-item clearfix"
    [routerLink]="[product.id]"
    routerLinkActive="active">
-  <div class="pull-left">
-    <h4 class="list-group-item-heading">{{ product.name }}</h4>
-    <p class="list-group-item-text">{{ product.description | shorten: 30 }}</p>
-    <p class="list-group-item-text">Price: {{ product.price }} $</p>
-    <p class="list-group-item-text">Pages: {{ product.pages }}</p>
-    <p class="list-group-item-text">Material: {{ product.coverMaterial }}</p>
-  </div>
-  <span class="pull-right">
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ product.name }}</h4>
+        <p class="list-group-item-text">{{ product.description | shorten: 30 }}</p>
+        <p class="list-group-item-text">Price: {{ product.price }} $</p>
+        <p class="list-group-item-text">Pages: {{ product.pages }}</p>
+        <p class="list-group-item-text">Material: {{ product.coverMaterial }}</p>
+    </div>
+    <span class="pull-right">
         <img [src]="product.imagePath"
              alt="{{ product.name}}"
              class="img-responsive"

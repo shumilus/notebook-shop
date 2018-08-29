@@ -13,9 +13,9 @@ import {OrderComponent} from './order/order.component';
 const adminRoutes: Routes = [
   {
     path: 'admin', component: AdminComponent, canActivate: [AuthGuardService], children: [
-      {path: 'order', component: OrderComponent},
+      {path: '', component: OrderComponent},
       {
-        path: '', component: GoodsAdminComponent, children: [
+        path: 'products', component: GoodsAdminComponent, children: [
           {path: '', component: AdminGoodsStartComponent},
           {path: ':id', component: AdminGoodsDetailComponent},
           {path: ':id/edit', component: AdminGoodsEditComponent},

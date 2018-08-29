@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {GoodsComponent} from './goods/goods.component';
+import {GoodsComponent} from './products/goods.component';
 import {CartComponent} from './cart/cart.component';
 import {HomeComponent} from './core/home/home.component';
-import {GoodsDetailComponent} from './goods/goods-detail/goods-detail.component';
-import {GoodsListComponent} from './goods/goods-list/goods-list.component';
-import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {GoodsDetailComponent} from './products/goods-detail/goods-detail.component';
+import {GoodsListComponent} from './products/goods-list/goods-list.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},

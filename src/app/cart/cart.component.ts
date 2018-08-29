@@ -5,8 +5,8 @@ import {AuthService} from '@shared/services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Order} from '@shared/models/order.model';
 
-import {OrderService} from "@shared/services/order.service";
-import {CommonService} from "@shared/services/common.service";
+import {OrderService} from '@shared/services/order.service';
+import {CommonService} from '@shared/services/common.service';
 import {ProductService} from '@shared/services/product.service';
 import {CartService} from '@shared/services/cart.service';
 
@@ -21,7 +21,7 @@ import {CartService} from '@shared/services/cart.service';
 
 export class CartComponent implements OnInit, OnDestroy {
   cartList: Goods[];
-  cartData: {sum: number, total: number} = {sum: 0, total: 0};
+  cartData: { sum: number, total: number } = {sum: 0, total: 0};
   cartSubscription: Subscription;
   userSubscription: Subscription;
   userEmail;
@@ -44,7 +44,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Initialize the component and call initForm, getUserEmail, getCart, getGoods and getCartData method
+   * @summary Initialize the component and call initForm, getUserEmail, getCart, getGoods and getCartData method
    */
   ngOnInit() {
     this.initForm();
@@ -55,7 +55,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * listener for user email
+   * @summary Listener for user email
    */
   getUserEmail() {
     this.userSubscription = this.authService.userSubject
@@ -68,7 +68,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * listener for update cart list
+   * @summary Listener for update cart list
    */
   getGoods() {
     this.cartSubscription = this.cartService.cartChanged
@@ -81,7 +81,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Get total and sum value of cart
+   * @summary Get total and sum value of cart
    */
   getCartData() {
     for (const product of this.cartList) {
@@ -91,7 +91,9 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Delete product from cart
+   * @summary Delete product from cart
+   * @param index - product index
+   * @param price - price data
    */
   onDelete(index: number, price: string) {
     this.cartService.deleteProduct(index);
@@ -101,7 +103,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * submit order to order list
+   * @summary Submit order to order list
    */
   onSubmit() {
     this.onAddOrder();
@@ -109,11 +111,11 @@ export class CartComponent implements OnInit, OnDestroy {
     this.buyerForm.reset();
     this.cartData.sum = 0;
     this.cartData.total = 0;
-    this.orderService.storageOrders('add');
+    this.orderService.storageOrders(true);
   }
 
   /**
-   * add order to order list
+   *@summary Add order to order list
    */
   onAddOrder() {
     this.order = this.buyerForm.value;
@@ -122,7 +124,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * init form
+   * @summary Init form
    */
   private initForm() {
     this.buyerForm = new FormGroup({
@@ -136,7 +138,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Cleanup logic
+   * @summary Cleanup logic
    */
   ngOnDestroy() {
     this.commonService.checkSubscription(this.cartSubscription);

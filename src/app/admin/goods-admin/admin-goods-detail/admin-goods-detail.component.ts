@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Goods} from '@shared/models/goods.model';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+
 import {ProductService} from '@shared/services/product.service';
-import {MatDialog} from "@angular/material";
-import {AdminGoodsEditComponent} from "../admin-goods-edit/admin-goods-edit.component";
 
 /**
  * @summary AdminGoodsDetail component
@@ -31,14 +31,14 @@ export class AdminGoodsDetailComponent implements OnInit {
   }
 
   /**
-   * Initialize the component and call getProduct method
+   * @summary Initialize the component and call getProduct method
    */
   ngOnInit() {
-    this.getProduct()
+    this.getProduct();
   }
 
   /**
-   * Get product by id
+   * @summary Get product by id
    */
   getProduct() {
     this.route.params.subscribe(
@@ -51,22 +51,14 @@ export class AdminGoodsDetailComponent implements OnInit {
     );
   }
 
-  openDialog(product: any) {
-    this.dialog.open(AdminGoodsEditComponent, {
-      width: '800px',
-      autoFocus: false,
-      data: product
-    });
-  }
-
   /**
-   * Delete product from product list
+   * @summary Delete product from product list
    */
   onDeleteGoods() {
     const products = this.productService.getCurrentProduct();
     products.splice(this.id, 1);
     this.productService.storageGoods(products, true);
-    this.router.navigate(['/admin']);
+    this.router.navigate(['/admin/products']);
   }
 
 }

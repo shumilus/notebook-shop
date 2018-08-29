@@ -3,7 +3,7 @@ import {AuthService} from '@shared/services/auth.service';
 import {Goods} from '@shared/models/goods.model';
 import {Subscription} from 'rxjs';
 import {ProductService} from '@shared/services/product.service';
-import {CommonService} from "@shared/services/common.service";
+import {CommonService} from '@shared/services/common.service';
 
 /**
  * @summary AdminGoods component
@@ -38,7 +38,7 @@ export class AdminGoodsListComponent implements OnInit, OnDestroy {
    * Initialize the component and call getUser and getCart method
    */
   ngOnInit() {
-    this.getProducts()
+    this.getProducts();
   }
 
   /**

@@ -1,6 +1,6 @@
-.footer-container{
+.footer-container {
   height: 100px;
-  background-color: rgba(118,33,113,0.9);
+  background-color: rgba(118, 33, 113, 0.9);
   width: 100%;
   display: flex;
   align-items: center;
@@ -17,37 +17,37 @@
   color: rgba(255, 218, 64, 0.9);
 }
 
-.phone{
+.phone {
   display: flex;
   align-items: center;
   color: rgba(255, 175, 30, 0.9);
 }
 
-p{
+p {
   font-size: 20px;
 }
 
-i{
+i {
   font-size: 25px;
   margin: 5px 10px;
   color: rgba(255, 175, 30, 0.9);
 }
 
-i:hover{
+i:hover {
   color: rgba(255, 218, 64, 0.9);
 }
 
-.icons{
+.icons {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.icon{
+.icon {
   margin-right: 10px;
   font-size: 25px;
 }
 
-a{
+a {
   cursor: pointer;
 }

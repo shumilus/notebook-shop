@@ -1,108 +1,110 @@
 <div class="row">
-  <div class="col-xs-12">
-    <form [formGroup]="goodsForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <mat-form-field>
-              <label for="name">Name</label>
-              <input matInput
-                     type="text"
-                     id="name"
-                     formControlName="name">
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <mat-form-field>
-              <label for="imagePath">Image URL</label>
-              <input matInput
-                     type="text"
-                     id="imagePath"
-                     formControlName="imagePath"
-                     #imagePath>
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <img [src]="imagePath.value" class="img-responsive" style="max-height: 120px" >
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <mat-form-field>
-              <label for="description">Description</label>
-              <textarea matInput
-                        type="text"
-                        id="description"
-                        rows="3"
-                        formControlName="description">
+    <div class="col-xs-12">
+        <form [formGroup]="goodsForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <label for="name">Name</label>
+                            <input matInput
+                                   type="text"
+                                   id="name"
+                                   formControlName="name">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <label for="imagePath">Image URL</label>
+                            <input matInput
+                                   type="text"
+                                   id="imagePath"
+                                   formControlName="imagePath"
+                                   #imagePath>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <img [src]="imagePath.value" class="img-responsive" style="max-height: 120px">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <label for="description">Description</label>
+                            <textarea matInput
+                                      type="text"
+                                      id="description"
+                                      rows="3"
+                                      formControlName="description">
               </textarea>
-            </mat-form-field>
+                        </mat-form-field>
 
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <mat-form-field>
-              <label for="price">Price</label>
-              <input matInput
-                     type="text"
-                     id="price"
-                     formControlName="price">
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <mat-form-field>
-              <label for="pages">Pages</label>
-              <input matInput
-                     type="text"
-                     id="pages"
-                     formControlName="pages">
-            </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <label for="price">Price</label>
+                            <input matInput
+                                   type="text"
+                                   id="price"
+                                   formControlName="price">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <label for="pages">Pages</label>
+                            <input matInput
+                                   type="text"
+                                   id="pages"
+                                   formControlName="pages">
+                        </mat-form-field>
 
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <mat-form-field>
-              <label for="coverMaterial">Cover material</label>
-              <input matInput
-                     type="text"
-                     id="coverMaterial"
-                     formControlName="coverMaterial">
-            </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <label for="coverMaterial">Cover material</label>
+                            <input matInput
+                                   type="text"
+                                   id="coverMaterial"
+                                   formControlName="coverMaterial">
+                        </mat-form-field>
 
-          </div>
-        </div>
-      </div>
+                    </div>
+                </div>
+            </div>
 
-      <div class="row">
-        <div class="col-xs-12 btn-box">
-          <button type="submit"
-                  mat-raised-button
-                  class="mat-primary save-btn"
-                  [disabled]="!goodsForm.valid">Save</button>
-          <button type="button"
-                  color="warn"
-                  mat-raised-button
-                  (click)="onCancel()">Cancel</button>
-        </div>
-      </div>
-    </form>
-  </div>
+            <div class="row">
+                <div class="col-xs-12 btn-box">
+                    <button type="submit"
+                            mat-raised-button
+                            class="mat-primary save-btn"
+                            [disabled]="!goodsForm.valid">Save
+                    </button>
+                    <button type="button"
+                            color="warn"
+                            mat-raised-button
+                            (click)="onCancel()">Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

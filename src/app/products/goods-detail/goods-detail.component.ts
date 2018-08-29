@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 import {Goods} from '@shared/models/goods.model';
+
 import {ProductService} from '@shared/services/product.service';
 import {CartService} from '@shared/services/cart.service';
-import {Subscription} from "rxjs";
-import {CommonService} from "@shared/services/common.service";
+import {CommonService} from '@shared/services/common.service';
 
 /**
  * @summary GoodsDetail component
@@ -27,23 +28,22 @@ export class GoodsDetailComponent implements OnInit, OnDestroy {
    * @param cartService - Cart service
    * @param commonService - Common service
    */
-  constructor( private productService: ProductService,
-               private router: Router,
-               private route: ActivatedRoute,
-               private cartService: CartService,
-               private commonService: CommonService) {
-
+  constructor(private productService: ProductService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private cartService: CartService,
+              private commonService: CommonService) {
   }
 
   /**
-   * Initialize the component and call getProductById method
+   * @summary Initialize the component and call getProductById method
    */
   ngOnInit() {
     this.getProductById();
   }
 
   /**
-   * Get product by id from products list
+   * @summary Get product by id from products list
    */
   getProductById() {
     this.route.params.subscribe(
@@ -53,9 +53,9 @@ export class GoodsDetailComponent implements OnInit, OnDestroy {
       }
     );
     this.productsSubscription = this.productService.productsSubject
-      .subscribe((goods: Goods[]) => {
+      .subscribe((products: Goods[]) => {
         this.product = this.productService.getProduct(this.id);
-      })
+      });
   }
 
   /**
@@ -66,7 +66,7 @@ export class GoodsDetailComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Cleanup logic
+   * @summary Cleanup logic
    */
   ngOnDestroy() {
     this.commonService.checkSubscription(this.productsSubscription);
