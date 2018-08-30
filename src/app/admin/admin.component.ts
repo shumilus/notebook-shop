@@ -10,4 +10,10 @@ import {Component} from '@angular/core';
 })
 
 export class AdminComponent {
+  toggle = true;
+
+  toggleOn() {
+    this.toggle = !this.toggle;
+    console.log(this.toggle);
+  }
 }

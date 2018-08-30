@@ -1,10 +1,17 @@
 <div class="container">
     <div class="btn-container">
-        <button type="button"
+        <button *ngIf="toggle" type="button"
                 class="button"
                 mat-raised-button
                 mat-primary
-                [routerLink]="['/admin','products']">To products
+                [routerLink]="['/admin','products']" (click)="toggleOn()">To products
+        </button>
+        <button type="button"
+                *ngIf="!toggle"
+                class="button"
+                mat-raised-button
+                mat-primary
+                [routerLink]="['/admin']" (click)="toggleOn()">To orders
         </button>
     </div>
     <router-outlet></router-outlet>

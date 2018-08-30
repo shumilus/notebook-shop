@@ -11,11 +11,9 @@
                            type="email">
                     <mat-error class="help-block red-stop"
                                *ngIf="!signupForm.get('email').valid && signupForm.get('email').value">Please enter a
-                        valid email name
-                    </mat-error>
-                    <mat-error class="help-block red-stop"
-                               *ngIf="signupForm.get('email').value === invalidEmail[0]">The name "admin@admin.com" is
-                        reserved!
+                        valid email name.
+                        <span *ngIf="signupForm.get('email').value === invalidEmail[0]">The name "admin@admin.com" is
+                        reserved!</span>
                     </mat-error>
                 </mat-form-field>
                 <i class="fas fa-ban red-stop"

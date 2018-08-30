@@ -9,6 +9,7 @@ import {OrderService} from '@shared/services/order.service';
 import {CommonService} from '@shared/services/common.service';
 import {ProductService} from '@shared/services/product.service';
 import {CartService} from '@shared/services/cart.service';
+import {ToasterService} from "angular2-toaster";
 
 /**
  * @summary Cart component
@@ -40,7 +41,8 @@ export class CartComponent implements OnInit, OnDestroy {
               private authService: AuthService,
               private orderService: OrderService,
               private productService: ProductService,
-              private commonService: CommonService) {
+              private commonService: CommonService,
+              private toasterService: ToasterService) {
   }
 
   /**
@@ -106,6 +108,10 @@ export class CartComponent implements OnInit, OnDestroy {
    * @summary Submit order to order list
    */
   onSubmit() {
+    if (this.userEmail === '') {
+      this.toasterService.pop('error', 'Your need login!');
+      return;
+    }
     this.onAddOrder();
     this.cartService.clearCart();
     this.buyerForm.reset();
