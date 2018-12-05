@@ -1,4 +1,4 @@
-import {CanActivate, Router,} from '@angular/router';
+import {CanActivate, Router} from '@angular/router';
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/internal/Observable';

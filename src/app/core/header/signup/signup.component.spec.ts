@@ -11,7 +11,7 @@ import {AuthService} from '@shared/services/auth.service';
 import {MockAuthService} from '@shared/unit-test-services/mock-auth.service';
 import {SignupComponent} from './signup.component';
 
-describe('SignupComponent', () => {
+describe('SignpComponent', () => {
   let component: any;
   let fixture: ComponentFixture<SignupComponent>;
   beforeEach(async(() => {

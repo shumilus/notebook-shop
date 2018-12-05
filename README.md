@@ -16,7 +16,7 @@ Navigate to `http://localhost:3000/`.
 ## Build
 `ng build` - test environment
 `ng build --prod --aot` - production environment
-The build artifacts will be stored in the `dist/myFirstAngular6Project` directory.
+The build artifacts will be stored in the `dist/notebook-shop` directory.
 
 ## Running unit tests
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
@@ -26,6 +26,3 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running unit tests
 `yarn test`
-
-## web site
-https://myfirstangular6project.firebaseapp.com/
